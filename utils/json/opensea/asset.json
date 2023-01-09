@@ -1,0 +1,319 @@
+{
+  "id": 526005,
+  "num_sales": 1,
+  "background_color": null,
+  "image_url": "https://i.seadn.io/gae/klqNjaubip4_-5bmzLdG4DI7tdMyyQqpR7xWT7o2pMiUz7yuEjAOucPtYT3bMV5swAncJddCZ4oH3LIrrNsn-zpnvMi2ZaA7ecsqmFY?w=500&auto=format",
+  "image_preview_url": "https://i.seadn.io/gae/klqNjaubip4_-5bmzLdG4DI7tdMyyQqpR7xWT7o2pMiUz7yuEjAOucPtYT3bMV5swAncJddCZ4oH3LIrrNsn-zpnvMi2ZaA7ecsqmFY?w=500&auto=format",
+  "image_thumbnail_url": "https://i.seadn.io/gae/klqNjaubip4_-5bmzLdG4DI7tdMyyQqpR7xWT7o2pMiUz7yuEjAOucPtYT3bMV5swAncJddCZ4oH3LIrrNsn-zpnvMi2ZaA7ecsqmFY?w=500&auto=format",
+  "image_original_url": "https://www.larvalabs.com/cryptopunks/cryptopunk1518.png",
+  "animation_url": null,
+  "animation_original_url": null,
+  "name": "CryptoPunk #1518",
+  "description": null,
+  "external_link": "https://www.larvalabs.com/cryptopunks/details/1518",
+  "asset_contract": {
+    "address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+    "asset_contract_type": "non-fungible",
+    "created_date": "2018-01-23T04:51:38.832339",
+    "name": "CryptoPunks",
+    "nft_version": "unsupported",
+    "opensea_version": null,
+    "owner": null,
+    "schema_name": "CRYPTOPUNKS",
+    "symbol": "PUNK",
+    "total_supply": null,
+    "description": "CryptoPunks launched as a fixed set of 10,000 items in mid-2017 and became one of the inspirations for the ERC-721 standard. They have been featured in places like The New York Times, Christie’s of London, Art|Basel Miami, and The PBS NewsHour.",
+    "external_link": "https://www.larvalabs.com/cryptopunks",
+    "image_url": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+    "default_to_fiat": false,
+    "dev_buyer_fee_basis_points": 0,
+    "dev_seller_fee_basis_points": 0,
+    "only_proxied_transfers": false,
+    "opensea_buyer_fee_basis_points": 0,
+    "opensea_seller_fee_basis_points": 250,
+    "buyer_fee_basis_points": 0,
+    "seller_fee_basis_points": 250,
+    "payout_address": null
+  },
+  "permalink": "https://opensea.io/assets/ethereum/0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb/1518",
+  "collection": {
+    "payment_tokens": [
+      {
+        "id": 13689077,
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "image_url": "https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg",
+        "name": "Ether",
+        "decimals": 18,
+        "eth_price": 1,
+        "usd_price": 1288.8
+      },
+      {
+        "id": 12182941,
+        "symbol": "DAI",
+        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "image_url": "https://openseauserdata.com/files/dai-ethereum.svg",
+        "name": "Dai Stablecoin",
+        "decimals": 18,
+        "eth_price": 0.00077508,
+        "usd_price": 0.999783
+      },
+      {
+        "id": 4645681,
+        "symbol": "WETH",
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "image_url": "https://openseauserdata.com/files/accae6b6fb3888cbff27a013729c22dc.svg",
+        "name": "Wrapped Ether",
+        "decimals": 18,
+        "eth_price": 1,
+        "usd_price": 1288.8
+      },
+      {
+        "id": 4403908,
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "image_url": "https://openseauserdata.com/files/749015f009a66abcb3bbb3502ae2f1ce.svg",
+        "name": "USD Coin",
+        "decimals": 6,
+        "eth_price": 0.00077504,
+        "usd_price": 0.999576
+      }
+    ],
+    "primary_asset_contracts": [
+      {
+        "address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+        "asset_contract_type": "non-fungible",
+        "created_date": "2018-01-23T04:51:38.832339",
+        "name": "CryptoPunks",
+        "nft_version": "unsupported",
+        "opensea_version": null,
+        "owner": null,
+        "schema_name": "CRYPTOPUNKS",
+        "symbol": "PUNK",
+        "total_supply": null,
+        "description": "CryptoPunks launched as a fixed set of 10,000 items in mid-2017 and became one of the inspirations for the ERC-721 standard. They have been featured in places like The New York Times, Christie’s of London, Art|Basel Miami, and The PBS NewsHour.",
+        "external_link": "https://www.larvalabs.com/cryptopunks",
+        "image_url": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+        "default_to_fiat": false,
+        "dev_buyer_fee_basis_points": 0,
+        "dev_seller_fee_basis_points": 0,
+        "only_proxied_transfers": false,
+        "opensea_buyer_fee_basis_points": 0,
+        "opensea_seller_fee_basis_points": 250,
+        "buyer_fee_basis_points": 0,
+        "seller_fee_basis_points": 250,
+        "payout_address": null
+      }
+    ],
+    "traits": {},
+    "stats": {
+      "one_hour_volume": 0,
+      "one_hour_change": 0,
+      "one_hour_sales": 0,
+      "one_hour_sales_change": 0,
+      "one_hour_average_price": 0,
+      "one_hour_difference": 0,
+      "six_hour_volume": 0,
+      "six_hour_change": -1,
+      "six_hour_sales": 0,
+      "six_hour_sales_change": 0,
+      "six_hour_average_price": 0,
+      "six_hour_difference": -71.9,
+      "one_day_volume": 141.89,
+      "one_day_change": -0.8307710886001587,
+      "one_day_sales": 3,
+      "one_day_sales_change": -0.7272727489471436,
+      "one_day_average_price": 47.29666666666666,
+      "one_day_difference": -696.5600000000001,
+      "seven_day_volume": 2009.27,
+      "seven_day_change": -0.4176940420919624,
+      "seven_day_sales": 31,
+      "seven_day_average_price": 64.81516129032258,
+      "seven_day_difference": -1441.27,
+      "thirty_day_volume": 14094.710000000005,
+      "thirty_day_change": -0.09911400145687661,
+      "thirty_day_sales": 208,
+      "thirty_day_average_price": 67.76302884615387,
+      "thirty_day_difference": -1550.6768999999986,
+      "total_volume": 1075167.397009338,
+      "total_sales": 22052,
+      "total_supply": 9998,
+      "count": 9998,
+      "num_owners": 3659,
+      "average_price": 48.75600385494912,
+      "num_reports": 1,
+      "market_cap": 648021.9825806451,
+      "floor_price": 0
+    },
+    "banner_image_url": "https://i.seadn.io/gae/48oVuDyfe_xhs24BC2TTVcaYCX7rrU5mpuQLyTgRDbKHj2PtzKZsQ5qC3xTH4ar34wwAXxEKH8uUDPAGffbg7boeGYqX6op5vBDcbA?w=500&auto=format",
+    "chat_url": null,
+    "created_date": "2017-06-23T20:55:07.000000+00:00",
+    "default_to_fiat": false,
+    "description": "CryptoPunks launched as a fixed set of 10,000 items in mid-2017 and became one of the inspirations for the ERC-721 standard. They have been featured in places like The New York Times, Christie’s of London, Art|Basel Miami, and The PBS NewsHour.",
+    "dev_buyer_fee_basis_points": "0",
+    "dev_seller_fee_basis_points": "0",
+    "discord_url": "https://discord.gg/tQp4pSE",
+    "display_data": {
+      "card_display_style": "cover"
+    },
+    "external_url": "https://www.larvalabs.com/cryptopunks",
+    "featured": false,
+    "featured_image_url": "https://i.seadn.io/gcs/0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb-featured-1556589448.png?w=500&auto=format",
+    "hidden": false,
+    "safelist_request_status": "verified",
+    "image_url": "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
+    "is_subject_to_whitelist": false,
+    "large_image_url": "https://i.seadn.io/gae/QB2kKuQEw04X02V9EoC2BNYZV652LYuewUv9ZdR7KJfI9Jocwmd28jIfsGg0umSCr2bOMV8O9UpLAkoaqfYwvwmC?w=500&auto=format",
+    "medium_username": null,
+    "name": "CryptoPunks",
+    "only_proxied_transfers": false,
+    "opensea_buyer_fee_basis_points": "0",
+    "opensea_seller_fee_basis_points": "250",
+    "payout_address": null,
+    "require_email": false,
+    "short_description": null,
+    "slug": "cryptopunks",
+    "telegram_url": null,
+    "twitter_username": "larvalabs",
+    "instagram_username": null,
+    "wiki_url": null,
+    "is_nsfw": false,
+    "fees": {
+      "seller_fees": {},
+      "opensea_fees": {
+        "0x0000a26b00c1f0df003000390027140000faa719": 250
+      }
+    },
+    "is_rarity_enabled": false
+  },
+  "decimals": null,
+  "token_metadata": null,
+  "is_nsfw": false,
+  "owner": null,
+  "seaport_sell_orders": null,
+  "creator": {
+    "user": null,
+    "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/22.png",
+    "address": "0xc352b534e8b987e036a93539fd6897f53488e56a",
+    "config": ""
+  },
+  "traits": [
+    {
+      "trait_type": "accessory",
+      "value": "Mustache",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 288,
+      "order": null
+    },
+    {
+      "trait_type": "type",
+      "value": "Male",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 6039,
+      "order": null
+    },
+    {
+      "trait_type": "accessory",
+      "value": "Classic Shades",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 502,
+      "order": null
+    },
+    {
+      "trait_type": "accessory",
+      "value": "Knitted Cap",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 419,
+      "order": null
+    },
+    {
+      "trait_type": "accessory",
+      "value": "3 attributes",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 4122,
+      "order": null
+    }
+  ],
+  "last_sale": {
+    "asset": {
+      "decimals": null,
+      "token_id": "1518"
+    },
+    "asset_bundle": null,
+    "event_type": "successful",
+    "event_timestamp": "2020-12-27T03:17:01",
+    "auction_type": null,
+    "total_price": "5250000000000000000",
+    "payment_token": {
+      "symbol": "ETH",
+      "address": "0x0000000000000000000000000000000000000000",
+      "image_url": "https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg",
+      "name": "Ether",
+      "decimals": 18,
+      "eth_price": "1.000000000000000",
+      "usd_price": "1288.799999999999955000"
+    },
+    "transaction": {
+      "block_hash": "0x8895a062ddfa02cabbcbb44d8707e9b7f9b27e72de0b8b04d96c9ace0472b5b4",
+      "block_number": "11533363",
+      "from_account": {
+        "user": {
+          "username": "XXXX"
+        },
+        "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/15.png",
+        "address": "0xcf6165e56c3383978f6eaaf58b314af41569c0f0",
+        "config": ""
+      },
+      "id": 69574671,
+      "timestamp": "2020-12-27T03:17:01",
+      "to_account": {
+        "user": null,
+        "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/23.png",
+        "address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+        "config": ""
+      },
+      "transaction_hash": "0xd9458f0595ef045f10804fee1816d2d5e6b45be83df2262b339882093d5e224e",
+      "transaction_index": "51"
+    },
+    "created_date": "2020-12-27T03:17:16.257153",
+    "quantity": "1"
+  },
+  "top_bid": null,
+  "listing_date": null,
+  "supports_wyvern": false,
+  "rarity_data": null,
+  "transfer_fee": null,
+  "transfer_fee_payment_token": null,
+  "related_assets": [],
+  "orders": null,
+  "auctions": [],
+  "top_ownerships": [
+    {
+      "owner": {
+        "user": null,
+        "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/32.png",
+        "address": "0xb88f61e6fbda83fbfffabe364112137480398018",
+        "config": ""
+      },
+      "quantity": "1",
+      "created_date": "2019-08-17T08:38:01.401909+00:00"
+    }
+  ],
+  "ownership": {
+    "owner": {
+      "user": null,
+      "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/32.png",
+      "address": "0xb88f61e6fbda83fbfffabe364112137480398018",
+      "config": ""
+    },
+    "quantity": "1",
+    "created_date": "2019-08-17T08:38:01.401909+00:00"
+  },
+  "highest_buyer_commitment": null,
+  "token_id": "1518"
+}
