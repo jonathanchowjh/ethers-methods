@@ -43,13 +43,13 @@ export const wallet = async (): Promise<ethers.Signer> => {
  * This function adds one to its input.
  * @param {string} fileName of Solidity Contract
  * @param {string} contractName of Solidity Contract
- * @param {[any]} deployArgs of Solidity Contract
+ * @param {any[]} deployArgs of Solidity Contract
  * @returns {Promise<string>} Address of Deployed Contract
  */
 export const deployContractFromArtifacts = async (
   fileName: string,
   contractName: string,
-  deployArgs: [any],
+  deployArgs: any[],
   artifactLocation?: string
 ): Promise<string> => {
   const fileList: string[] = await getFilePathFromArtifacts(
