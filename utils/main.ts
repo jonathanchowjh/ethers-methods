@@ -84,7 +84,7 @@ export const deployContractFromArtifacts = async (
  * @returns {Promise<string>} Address of Deployed Contract
  * @example
  * ```ts
- * await sdk.deployContractFromArtifacts(
+ * await sdk.deployContract(
  *    "artifacts/contracts/Utility.sol/Utility.json",
  *    "utility",
  *    [],
@@ -201,7 +201,7 @@ export const setNetwork = async (networkName: string): Promise<string> => {
 
 /**
  * This function returns list of all saved addresses of deployed contracts
- * @returns {Promise<Object>} list of all saved addresses of deployed contracts
+ * @returns {Promise<KeyStringAny>} list of all saved addresses of deployed contracts
  * @example
  * ```ts
  * await getAddresses();

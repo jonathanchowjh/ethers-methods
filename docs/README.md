@@ -68,27 +68,139 @@ npx ts-node scripts/runTest.ts
 ```
 
 ### SDK Documentation
+[FULL DOCUMENTATION](docs/modules.md)
+
+▸ **deployContract**(`contractAbi`, `contractName`, `deployArgs`, `wallet`): `Promise`<`string`\>
+
+This function deploys contract, with ABI path, deployArgs, and a Signer
+
+**`Example`**
+
+```ts
+await sdk.deployContract(
+   "artifacts/contracts/Utility.sol/Utility.json",
+   "utility",
+   [],
+   await sdk.wallet()
+);
 ```
-wallet: () => Promise<import("ethers").Wallet>;
-deployContractFromArtifacts: (fileName: string, contractName: string, deployArgs: any) => Promise<any>;
-deployContract: (contractAbi: string, contractName: string, deployArgs: any, wallet: import("ethers").Signer) => Promise<any>;
-getContractFromArtifacts: (fileName: string, contractName: string) => Promise<import("ethers").Contract>;
-getContract: (contractAbi: string, contractAddress: string, wallet: import("ethers").Signer) => Promise<import("ethers").Contract>;
-getNetwork: () => Promise<any>;
-setNetwork: (networkName: string) => Promise<any>;
-getAddresses: () => Promise<{
-    [k: string]: any;
-}>;
-saveAddress: (name: string, value: string, file?: string | undefined) => Promise<void>;
-readJson: (type?: string | undefined, name?: string | undefined, file?: string | undefined) => Promise<any>;
-saveJson: (type: string, name: string, value: string, file?: string | undefined) => Promise<void>;
-filterObj: (obj: Object, str: string) => {
-    [k: string]: any;
-};
-addressName: (name: string) => Promise<string>;
-wait: (ms: number) => Promise<unknown>;
-getJSON: (file: string) => Promise<any>;
-getFilePathFromArtifacts: (fileName: string) => Promise<string[]>;
-getFilePath: (currentDirPath: string, fileName: string) => Promise<string[]>;
-walk: (dir: string) => Promise<(string | undefined)[]>;
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `contractAbi` | `string` | Absolute or Relative (to project root) path of ABI JSON file |
+| `contractName` | `string` | Name of Contract to index deployed addresses |
+| `deployArgs` | `any`[] | Array of arguments to be deconstructed |
+| `wallet` | `Signer` | Signer used to sign transactions |
+
+#### Returns
+
+`Promise`<`string`\>
+
+Address of Deployed Contract
+___
+
+▸ **deployContractFromArtifacts**(`fileName`, `contractName`, `deployArgs`, `artifactLocation?`): `Promise`<`string`\>
+
+This function deploys contract, looking through Artifacts for the ABI matching the fileName provided.
+
+**`Example`**
+
+```ts
+await sdk.deployContractFromArtifacts("Utility", "utility", []);
 ```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `fileName` | `string` | Name of Contract file to find ABI |
+| `contractName` | `string` | Name of Contract to index deployed addresses |
+| `deployArgs` | `any`[] | Array of arguments to be deconstructed |
+| `artifactLocation?` | `string` | (Optional) File location of ABIs |
+
+#### Returns
+
+`Promise`<`string`\>
+
+Address of Deployed Contract
+___
+
+▸ **getContract**(`contractAbi`, `contractAddress`, `wallet`): `Promise`<`Contract`\>
+
+This function creates a contract interface with a deployed contract.
+
+**`Example`**
+
+```ts
+await sdk.getContract(
+   "artifacts/contracts/Utility.sol/Utility.json",
+   "0x65B165C17a8660e84e4427c4024fcB784577AB05",
+   await sdk.wallet()
+);
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `contractAbi` | `string` | Absolute or Relative (to project root) path of ABI JSON file |
+| `contractAddress` | `string` | Address of Deployed Contract |
+| `wallet` | `Signer` | Signer used to sign transactions |
+
+#### Returns
+
+`Promise`<`Contract`\>
+
+Deployed Contract ethers Interface
+___
+
+▸ **getContractFromArtifacts**(`fileName`, `contractName`, `artifactLocation?`): `Promise`<`Contract`\>
+
+This function creates a contract interface with a deployed contract,
+looking through Artifacts for the ABI matching the fileName provided.
+
+**`Example`**
+
+```ts
+await sdk.getContractFromArtifacts("Utility", "utility");
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `fileName` | `string` | Name of Contract file to find ABI |
+| `contractName` | `string` | Name of Contract to index deployed addresses |
+| `artifactLocation?` | `string` | (Optional) File location of ABIs |
+
+#### Returns
+
+`Promise`<`Contract`\>
+
+Deployed Contract ethers Interface
+___
+
+▸ **setNetwork**(`networkName`): `Promise`<`string`\>
+
+This function changes the current NETWORK
+
+**`Example`**
+
+```ts
+await setNetwork('goerli');
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `networkName` | `string` | name of NETWORK name to change to |
+
+#### Returns
+
+`Promise`<`string`\>
+
+current network (localhost / hardhat / goerli / web3)
+___
