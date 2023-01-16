@@ -1,4 +1,4 @@
-import fs, { read } from "fs";
+import fs from "fs";
 import path from "path";
 import { ethers, ContractFactory, Wallet } from "ethers";
 import { PRIVATE_KEY_1, GOERLI_RPC_URL } from "./env";
