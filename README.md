@@ -8,7 +8,7 @@ npx hardhat   // options: typescript-project, hardhat-toolbox
 
 ### Install
 ```
-npm i -D ethers dotenv hardhat-sdk
+npm i -D hardhat-sdk
 mkdir utils && mkdir utils/json && touch utils/json/constants.json
 touch .env
 ```

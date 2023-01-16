@@ -3,11 +3,10 @@ import path from "path";
 import { ethers, ContractFactory, Wallet } from "ethers";
 import { PRIVATE_KEY_1, GOERLI_RPC_URL } from "./env";
 
-/**
- * =====================================
- * HARDHAT FUNCTIONS
- * =====================================
- */
+
+ // =====================================
+ // HARDHAT FUNCTIONS
+ // =====================================
 
 declare global {
   interface Window {
@@ -15,7 +14,7 @@ declare global {
   }
 }
 
-export type KeyStringAny = { [k: string]: any }
+export type KeyStringAny = { [k: string]: any };
 
 export const wallet = async (): Promise<ethers.Signer> => {
   const network = await getNetwork();
@@ -37,16 +36,30 @@ export const wallet = async (): Promise<ethers.Signer> => {
     const signer = provider.getSigner();
     return signer;
   }
-  throw new Error("Invalid Network");
+  throw new Error("hardhat-sdk::wallet::invalid-network");
 };
 
+/**
+ * This function adds one to its input.
+ * @param {string} fileName of Solidity Contract
+ * @param {string} contractName of Solidity Contract
+ * @param {[any]} deployArgs of Solidity Contract
+ * @returns {Promise<string>} Address of Deployed Contract
+ */
 export const deployContractFromArtifacts = async (
   fileName: string,
   contractName: string,
-  deployArgs: any
+  deployArgs: [any],
+  artifactLocation?: string
 ): Promise<string> => {
-  const fileList: string[] = await getFilePathFromArtifacts(fileName);
-  if (fileList.length == 0) throw new Error(`Invalid File`);
+  const fileList: string[] = await getFilePathFromArtifacts(
+    fileName,
+    artifactLocation
+  );
+  if (fileList.length == 0)
+    throw new Error(
+      "hardhat-sdk::deployContractFromArtifacts::artifact-not-found"
+    );
   return deployContract(fileList[0], contractName, deployArgs, await wallet());
 };
 
@@ -65,15 +78,25 @@ export const deployContract = async (
 
 export const getContractFromArtifacts = async (
   fileName: string,
-  contractName: string
+  contractName: string,
+  artifactLocation?: string
 ): Promise<ethers.Contract> => {
-  const fileList: string[] = await getFilePathFromArtifacts(fileName);
+  const fileList: string[] = await getFilePathFromArtifacts(
+    fileName,
+    artifactLocation
+  );
   const contractAddr = await readJson(
     "addresses",
     await addressName(contractName)
   );
-  if (fileList.length == 0) throw new Error(`Invalid File`);
-  if (typeof contractAddr != "string") throw new Error(`Invalid address`);
+  if (fileList.length == 0)
+    throw new Error(
+      "hardhat-sdk::getContractFromArtifacts::artifact-not-found"
+    );
+  if (typeof contractAddr != "string")
+    throw new Error(
+      "hardhat-sdk::getContractFromArtifacts::contract-address-not-found"
+    );
   return getContract(fileList[0], contractAddr, await wallet());
 };
 
@@ -83,32 +106,25 @@ export const getContract = async (
   wallet: ethers.Signer
 ): Promise<ethers.Contract> => {
   const abi = await getJSON(contractAbi);
-  if (!abi.abi) throw new Error("Invalid ABI");
+  if (!abi.abi) throw new Error("hardhat-sdk::getContract::abi-not-found");
   return new ethers.Contract(contractAddress, abi.abi, wallet);
 };
 
-/**
- * =====================================
- * CONTRACT ADDRESSES (json formatting)
- * =====================================
- */
-
 // ===================================
-// GET SET NETWORK
+// JSON FORMATTING
 // ===================================
 export const getNetwork = async (): Promise<string> => {
   const network = await readJson("chain", "network");
-  if (typeof network != "string") throw new Error("Invalid network");
+  if (typeof network != "string")
+    throw new Error("hardhat-sdk::getNetwork::invalid-network");
   return network;
 };
+
 export const setNetwork = async (networkName: string): Promise<string> => {
   await saveJson("chain", "network", networkName);
   return getNetwork();
 };
 
-// ===================================
-// GET SAVE ADDRESSES
-// ===================================
 export const getAddresses = async (): Promise<KeyStringAny> => {
   const object = await readJson();
   if (!object || typeof object == "string" || !object.addresses) return {};
@@ -117,7 +133,8 @@ export const getAddresses = async (): Promise<KeyStringAny> => {
 
 export const getAddress = async (contractName: string): Promise<string> => {
   const addr = await readJson("addresses", await addressName(contractName));
-  if (typeof addr != "string") throw new Error('invalid address');
+  if (typeof addr != "string")
+    throw new Error("hardhat-sdk::getNetwork::invalid-address");
   return addr;
 };
 
@@ -193,9 +210,12 @@ export const getJSON = async (file: string): Promise<KeyStringAny> => {
 };
 
 export const getFilePathFromArtifacts = async (
-  fileName: string
+  fileName: string,
+  artifactLocation?: string
 ): Promise<string[]> => {
-  return getFilePath(path.resolve(rootFolder(), "artifacts/"), fileName);
+  const location =
+    artifactLocation == undefined ? "artifacts/" : artifactLocation;
+  return getFilePath(path.resolve(rootFolder(), location), fileName);
 };
 
 export const getFilePath = async (
@@ -231,7 +251,7 @@ export const walk = async (dir: string): Promise<string[]> => {
   }) as string[];
 };
 
-const rootFolder = (): string => {
+export const rootFolder = (): string => {
   return __dirname.includes("node_modules")
     ? __dirname.split("node_modules")[0]
     : path.resolve(__dirname, "../");
