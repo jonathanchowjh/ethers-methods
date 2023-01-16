@@ -55,6 +55,11 @@ main()
   .then(val => console.log(val))
   .catch(err => console.error(err));
 ```
+* Run scripts in order
+```
+npx ts-node scripts/deploy.ts
+npx ts-node scripts/runTest.ts
+```
 ### SDK Documentation
 ```
 wallet: () => Promise<import("ethers").Wallet>;
