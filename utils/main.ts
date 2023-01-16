@@ -97,7 +97,7 @@ export const getContract = async (
 // GET SET NETWORK
 // ===================================
 export const getNetwork = async (): Promise<string> => {
-  const network = readJson("chain", "network");
+  const network = await readJson("chain", "network");
   if (typeof network != "string") throw new Error("Invalid network");
   return network;
 };
