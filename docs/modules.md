@@ -1,41 +1,10 @@
-[hardhat-sdk](README.md) / Exports
-
 # hardhat-sdk
-
-## Table of contents
-
-### Type Aliases
-
-- [KeyStringAny](modules.md#keystringany)
-
-### Functions
-
-- [addressName](modules.md#addressname)
-- [deployContract](modules.md#deploycontract)
-- [deployContractFromArtifacts](modules.md#deploycontractfromartifacts)
-- [filterObj](modules.md#filterobj)
-- [getAddress](modules.md#getaddress)
-- [getAddresses](modules.md#getaddresses)
-- [getContract](modules.md#getcontract)
-- [getContractFromArtifacts](modules.md#getcontractfromartifacts)
-- [getFilePath](modules.md#getfilepath)
-- [getFilePathFromArtifacts](modules.md#getfilepathfromartifacts)
-- [getJSON](modules.md#getjson)
-- [getNetwork](modules.md#getnetwork)
-- [readJson](modules.md#readjson)
-- [rootFolder](modules.md#rootfolder)
-- [saveAddress](modules.md#saveaddress)
-- [saveJson](modules.md#savejson)
-- [setNetwork](modules.md#setnetwork)
-- [wait](modules.md#wait)
-- [walk](modules.md#walk)
-- [wallet](modules.md#wallet)
 
 ## Type Aliases
 
 ### KeyStringAny
 
-Ƭ **KeyStringAny**: `Object`
+ **KeyStringAny**: `Object`
 
 #### Index signature
 
@@ -43,13 +12,13 @@
 
 #### Defined in
 
-[main.ts:17](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L17)
+[main.ts:17](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L17)
 
 ## Functions
 
 ### addressName
 
-▸ **addressName**(`name`): `Promise`<`string`\>
+**addressName**(`name`): `Promise`<`string`\>
 
 #### Parameters
 
@@ -63,13 +32,13 @@
 
 #### Defined in
 
-[main.ts:198](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L198)
+[main.ts:199](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L199)
 
 ___
 
 ### deployContract
 
-▸ **deployContract**(`contractAbi`, `contractName`, `deployArgs`, `wallet`): `Promise`<`string`\>
+**deployContract**(`contractAbi`, `contractName`, `deployArgs`, `wallet`): `Promise`<`string`\>
 
 #### Parameters
 
@@ -86,13 +55,13 @@ ___
 
 #### Defined in
 
-[main.ts:66](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L66)
+[main.ts:67](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L67)
 
 ___
 
 ### deployContractFromArtifacts
 
-▸ **deployContractFromArtifacts**(`fileName`, `contractName`, `deployArgs`, `artifactLocation?`): `Promise`<`string`\>
+**deployContractFromArtifacts**(`fileName`, `contractName`, `deployArgs`, `artifactLocation?`): `Promise`<`string`\>
 
 This function adds one to its input.
 
@@ -100,10 +69,10 @@ This function adds one to its input.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `fileName` | `string` | of Solidity Contract |
-| `contractName` | `string` | of Solidity Contract |
-| `deployArgs` | `any`[] | of Solidity Contract |
-| `artifactLocation?` | `string` | - |
+| `fileName` | `string` | Name of Contract file to find ABI |
+| `contractName` | `string` | Name of Contract to index deployed addresses |
+| `deployArgs` | `any`[] | Array of arguments to be deconstructed |
+| `artifactLocation?` | `string` | (Optional) File location of ABIs |
 
 #### Returns
 
@@ -113,13 +82,13 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:49](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L49)
+[main.ts:50](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L50)
 
 ___
 
 ### filterObj
 
-▸ **filterObj**(`obj`, `str`): [`KeyStringAny`](modules.md#keystringany)
+**filterObj**(`obj`, `str`): [`KeyStringAny`](modules.md#keystringany)
 
 #### Parameters
 
@@ -134,13 +103,13 @@ ___
 
 #### Defined in
 
-[main.ts:195](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L195)
+[main.ts:196](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L196)
 
 ___
 
 ### getAddress
 
-▸ **getAddress**(`contractName`): `Promise`<`string`\>
+**getAddress**(`contractName`): `Promise`<`string`\>
 
 #### Parameters
 
@@ -154,13 +123,13 @@ ___
 
 #### Defined in
 
-[main.ts:134](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L134)
+[main.ts:135](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L135)
 
 ___
 
 ### getAddresses
 
-▸ **getAddresses**(): `Promise`<[`KeyStringAny`](modules.md#keystringany)\>
+**getAddresses**(): `Promise`<[`KeyStringAny`](modules.md#keystringany)\>
 
 #### Returns
 
@@ -168,13 +137,13 @@ ___
 
 #### Defined in
 
-[main.ts:128](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L128)
+[main.ts:129](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L129)
 
 ___
 
 ### getContract
 
-▸ **getContract**(`contractAbi`, `contractAddress`, `wallet`): `Promise`<`Contract`\>
+**getContract**(`contractAbi`, `contractAddress`, `wallet`): `Promise`<`Contract`\>
 
 #### Parameters
 
@@ -190,13 +159,13 @@ ___
 
 #### Defined in
 
-[main.ts:103](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L103)
+[main.ts:104](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L104)
 
 ___
 
 ### getContractFromArtifacts
 
-▸ **getContractFromArtifacts**(`fileName`, `contractName`, `artifactLocation?`): `Promise`<`Contract`\>
+**getContractFromArtifacts**(`fileName`, `contractName`, `artifactLocation?`): `Promise`<`Contract`\>
 
 #### Parameters
 
@@ -212,13 +181,13 @@ ___
 
 #### Defined in
 
-[main.ts:79](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L79)
+[main.ts:80](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L80)
 
 ___
 
 ### getFilePath
 
-▸ **getFilePath**(`currentDirPath`, `fileName`): `Promise`<`string`[]\>
+**getFilePath**(`currentDirPath`, `fileName`): `Promise`<`string`[]\>
 
 #### Parameters
 
@@ -233,13 +202,13 @@ ___
 
 #### Defined in
 
-[main.ts:221](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L221)
+[main.ts:222](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L222)
 
 ___
 
 ### getFilePathFromArtifacts
 
-▸ **getFilePathFromArtifacts**(`fileName`, `artifactLocation?`): `Promise`<`string`[]\>
+**getFilePathFromArtifacts**(`fileName`, `artifactLocation?`): `Promise`<`string`[]\>
 
 #### Parameters
 
@@ -254,13 +223,13 @@ ___
 
 #### Defined in
 
-[main.ts:212](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L212)
+[main.ts:213](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L213)
 
 ___
 
 ### getJSON
 
-▸ **getJSON**(`file`): `Promise`<[`KeyStringAny`](modules.md#keystringany)\>
+**getJSON**(`file`): `Promise`<[`KeyStringAny`](modules.md#keystringany)\>
 
 #### Parameters
 
@@ -274,13 +243,13 @@ ___
 
 #### Defined in
 
-[main.ts:206](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L206)
+[main.ts:207](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L207)
 
 ___
 
 ### getNetwork
 
-▸ **getNetwork**(): `Promise`<`string`\>
+**getNetwork**(): `Promise`<`string`\>
 
 #### Returns
 
@@ -288,13 +257,13 @@ ___
 
 #### Defined in
 
-[main.ts:116](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L116)
+[main.ts:117](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L117)
 
 ___
 
 ### readJson
 
-▸ **readJson**(`type?`, `name?`, `file?`): `Promise`<`undefined` \| `string` \| [`KeyStringAny`](modules.md#keystringany)\>
+**readJson**(`type?`, `name?`, `file?`): `Promise`<`undefined` \| `string` \| [`KeyStringAny`](modules.md#keystringany)\>
 
 #### Parameters
 
@@ -310,13 +279,13 @@ ___
 
 #### Defined in
 
-[main.ts:152](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L152)
+[main.ts:153](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L153)
 
 ___
 
 ### rootFolder
 
-▸ **rootFolder**(): `string`
+**rootFolder**(): `string`
 
 #### Returns
 
@@ -324,13 +293,13 @@ ___
 
 #### Defined in
 
-[main.ts:254](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L254)
+[main.ts:255](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L255)
 
 ___
 
 ### saveAddress
 
-▸ **saveAddress**(`name`, `value`, `file?`): `Promise`<`void`\>
+**saveAddress**(`name`, `value`, `file?`): `Promise`<`void`\>
 
 #### Parameters
 
@@ -346,13 +315,13 @@ ___
 
 #### Defined in
 
-[main.ts:141](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L141)
+[main.ts:142](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L142)
 
 ___
 
 ### saveJson
 
-▸ **saveJson**(`type`, `name`, `value`, `file?`): `Promise`<`void`\>
+**saveJson**(`type`, `name`, `value`, `file?`): `Promise`<`void`\>
 
 #### Parameters
 
@@ -369,13 +338,13 @@ ___
 
 #### Defined in
 
-[main.ts:174](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L174)
+[main.ts:175](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L175)
 
 ___
 
 ### setNetwork
 
-▸ **setNetwork**(`networkName`): `Promise`<`string`\>
+**setNetwork**(`networkName`): `Promise`<`string`\>
 
 #### Parameters
 
@@ -389,13 +358,13 @@ ___
 
 #### Defined in
 
-[main.ts:123](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L123)
+[main.ts:124](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L124)
 
 ___
 
 ### wait
 
-▸ **wait**(`ms`): `Promise`<`void`\>
+**wait**(`ms`): `Promise`<`void`\>
 
 #### Parameters
 
@@ -409,13 +378,13 @@ ___
 
 #### Defined in
 
-[main.ts:201](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L201)
+[main.ts:202](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L202)
 
 ___
 
 ### walk
 
-▸ **walk**(`dir`): `Promise`<`string`[]\>
+**walk**(`dir`): `Promise`<`string`[]\>
 
 #### Parameters
 
@@ -429,13 +398,13 @@ ___
 
 #### Defined in
 
-[main.ts:238](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L238)
+[main.ts:239](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L239)
 
 ___
 
 ### wallet
 
-▸ **wallet**(): `Promise`<`Signer`\>
+**wallet**(): `Promise`<`Signer`\>
 
 #### Returns
 
@@ -443,4 +412,4 @@ ___
 
 #### Defined in
 
-[main.ts:19](https://github.com/jonathanchowjh/nft-contracts/blob/2b4745b/utils/main.ts#L19)
+[main.ts:19](https://github.com/jonathanchowjh/nft-contracts/blob/5ef7d40/utils/main.ts#L19)
