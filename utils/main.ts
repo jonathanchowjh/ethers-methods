@@ -20,7 +20,6 @@ export type KeyStringAny = { [k: string]: any };
  * @returns {Promise<ethers.Signer>} Signer used to sign transactions
  * @example
  * ```ts
- * import sdk from 'hardhat-sdk';
  * await wallet();
  * ```
  */
@@ -56,7 +55,6 @@ export const wallet = async (): Promise<ethers.Signer> => {
  * @returns {Promise<string>} Address of Deployed Contract
  * @example
  * ```ts
- * import sdk from 'hardhat-sdk';
  * await sdk.deployContractFromArtifacts("Utility", "utility", []);
  * ```
  */
@@ -86,7 +84,6 @@ export const deployContractFromArtifacts = async (
  * @returns {Promise<string>} Address of Deployed Contract
  * @example
  * ```ts
- * import sdk from 'hardhat-sdk';
  * await sdk.deployContractFromArtifacts(
  *    "artifacts/contracts/Utility.sol/Utility.json",
  *    "utility",
@@ -117,7 +114,6 @@ export const deployContract = async (
  * @returns {Promise<ethers.Contract>} Deployed Contract ethers Interface
  * @example
  * ```ts
- * import sdk from 'hardhat-sdk';
  * await sdk.getContractFromArtifacts("Utility", "utility");
  * ```
  */
@@ -146,14 +142,13 @@ export const getContractFromArtifacts = async (
 };
 
 /**
- * This function deploys contract, with ABI path, deployArgs, and a Signer
+ * This function creates a contract interface with a deployed contract.
  * @param {string} contractAbi Absolute or Relative (to project root) path of ABI JSON file
  * @param {string} contractAddress Address of Deployed Contract
  * @param {ethers.Signer} wallet Signer used to sign transactions
  * @returns {Promise<ethers.Contract>} Deployed Contract ethers Interface
  * @example
  * ```ts
- * import sdk from 'hardhat-sdk';
  * await sdk.getContract(
  *    "artifacts/contracts/Utility.sol/Utility.json",
  *    "0x65B165C17a8660e84e4427c4024fcB784577AB05",
@@ -174,6 +169,15 @@ export const getContract = async (
 // ===================================
 // JSON FORMATTING
 // ===================================
+
+/**
+ * This function returns the current NETWORK
+ * @returns {Promise<string>} current network (localhost / hardhat / goerli / web3)
+ * @example
+ * ```ts
+ * await sdk.getNetwork();
+ * ```
+ */
 export const getNetwork = async (): Promise<string> => {
   const network = await readJson("chain", "network");
   if (typeof network != "string")
@@ -181,11 +185,28 @@ export const getNetwork = async (): Promise<string> => {
   return network;
 };
 
+/**
+ * This function changes the current NETWORK
+ * @param {string} networkName name of NETWORK name to change to
+ * @returns {Promise<string>} current network (localhost / hardhat / goerli / web3)
+ * @example
+ * ```ts
+ * await setNetwork('goerli');
+ * ```
+ */
 export const setNetwork = async (networkName: string): Promise<string> => {
   await saveJson("chain", "network", networkName);
   return getNetwork();
 };
 
+/**
+ * This function returns list of all saved addresses of deployed contracts
+ * @returns {Promise<Object>} list of all saved addresses of deployed contracts
+ * @example
+ * ```ts
+ * await getAddresses();
+ * ```
+ */
 export const getAddresses = async (): Promise<KeyStringAny> => {
   const object = await readJson();
   if (!object || typeof object == "string" || !object.addresses) return {};

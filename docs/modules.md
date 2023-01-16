@@ -43,7 +43,7 @@
 
 #### Defined in
 
-[main.ts:16](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L16)
+[main.ts:16](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L16)
 
 ## Functions
 
@@ -63,7 +63,7 @@
 
 #### Defined in
 
-[main.ts:259](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L259)
+[main.ts:280](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L280)
 
 ___
 
@@ -76,7 +76,6 @@ This function deploys contract, with ABI path, deployArgs, and a Signer
 **`Example`**
 
 ```ts
-import sdk from 'hardhat-sdk';
 await sdk.deployContractFromArtifacts(
    "artifacts/contracts/Utility.sol/Utility.json",
    "utility",
@@ -102,7 +101,7 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:98](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L98)
+[main.ts:95](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L95)
 
 ___
 
@@ -115,7 +114,6 @@ This function deploys contract, looking through Artifacts for the ABI matching t
 **`Example`**
 
 ```ts
-import sdk from 'hardhat-sdk';
 await sdk.deployContractFromArtifacts("Utility", "utility", []);
 ```
 
@@ -136,7 +134,7 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:63](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L63)
+[main.ts:61](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L61)
 
 ___
 
@@ -157,7 +155,7 @@ ___
 
 #### Defined in
 
-[main.ts:256](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L256)
+[main.ts:277](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L277)
 
 ___
 
@@ -177,7 +175,7 @@ ___
 
 #### Defined in
 
-[main.ts:195](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L195)
+[main.ts:216](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L216)
 
 ___
 
@@ -185,13 +183,23 @@ ___
 
 ▸ **getAddresses**(): `Promise`<[`KeyStringAny`](modules.md#keystringany)\>
 
+This function returns list of all saved addresses of deployed contracts
+
+**`Example`**
+
+```ts
+await getAddresses();
+```
+
 #### Returns
 
 `Promise`<[`KeyStringAny`](modules.md#keystringany)\>
 
+list of all saved addresses of deployed contracts
+
 #### Defined in
 
-[main.ts:189](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L189)
+[main.ts:210](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L210)
 
 ___
 
@@ -199,12 +207,11 @@ ___
 
 ▸ **getContract**(`contractAbi`, `contractAddress`, `wallet`): `Promise`<`Contract`\>
 
-This function deploys contract, with ABI path, deployArgs, and a Signer
+This function creates a contract interface with a deployed contract.
 
 **`Example`**
 
 ```ts
-import sdk from 'hardhat-sdk';
 await sdk.getContract(
    "artifacts/contracts/Utility.sol/Utility.json",
    "0x65B165C17a8660e84e4427c4024fcB784577AB05",
@@ -228,7 +235,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:164](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L164)
+[main.ts:159](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L159)
 
 ___
 
@@ -242,7 +249,6 @@ looking through Artifacts for the ABI matching the fileName provided.
 **`Example`**
 
 ```ts
-import sdk from 'hardhat-sdk';
 await sdk.getContractFromArtifacts("Utility", "utility");
 ```
 
@@ -262,7 +268,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:124](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L124)
+[main.ts:120](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L120)
 
 ___
 
@@ -283,7 +289,7 @@ ___
 
 #### Defined in
 
-[main.ts:282](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L282)
+[main.ts:303](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L303)
 
 ___
 
@@ -304,7 +310,7 @@ ___
 
 #### Defined in
 
-[main.ts:273](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L273)
+[main.ts:294](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L294)
 
 ___
 
@@ -324,7 +330,7 @@ ___
 
 #### Defined in
 
-[main.ts:267](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L267)
+[main.ts:288](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L288)
 
 ___
 
@@ -332,13 +338,23 @@ ___
 
 ▸ **getNetwork**(): `Promise`<`string`\>
 
+This function returns the current NETWORK
+
+**`Example`**
+
+```ts
+await sdk.getNetwork();
+```
+
 #### Returns
 
 `Promise`<`string`\>
 
+current network (localhost / hardhat / goerli / web3)
+
 #### Defined in
 
-[main.ts:177](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L177)
+[main.ts:181](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L181)
 
 ___
 
@@ -360,7 +376,7 @@ ___
 
 #### Defined in
 
-[main.ts:213](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L213)
+[main.ts:234](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L234)
 
 ___
 
@@ -374,7 +390,7 @@ ___
 
 #### Defined in
 
-[main.ts:315](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L315)
+[main.ts:336](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L336)
 
 ___
 
@@ -396,7 +412,7 @@ ___
 
 #### Defined in
 
-[main.ts:202](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L202)
+[main.ts:223](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L223)
 
 ___
 
@@ -419,7 +435,7 @@ ___
 
 #### Defined in
 
-[main.ts:235](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L235)
+[main.ts:256](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L256)
 
 ___
 
@@ -427,19 +443,29 @@ ___
 
 ▸ **setNetwork**(`networkName`): `Promise`<`string`\>
 
+This function changes the current NETWORK
+
+**`Example`**
+
+```ts
+await setNetwork('goerli');
+```
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `networkName` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `networkName` | `string` | name of NETWORK name to change to |
 
 #### Returns
 
 `Promise`<`string`\>
 
+current network (localhost / hardhat / goerli / web3)
+
 #### Defined in
 
-[main.ts:184](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L184)
+[main.ts:197](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L197)
 
 ___
 
@@ -459,7 +485,7 @@ ___
 
 #### Defined in
 
-[main.ts:262](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L262)
+[main.ts:283](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L283)
 
 ___
 
@@ -479,7 +505,7 @@ ___
 
 #### Defined in
 
-[main.ts:299](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L299)
+[main.ts:320](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L320)
 
 ___
 
@@ -492,7 +518,6 @@ This function returns a Signer connected to a provider, given the appropriate ne
 **`Example`**
 
 ```ts
-import sdk from 'hardhat-sdk';
 await wallet();
 ```
 
@@ -504,4 +529,4 @@ Signer used to sign transactions
 
 #### Defined in
 
-[main.ts:27](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L27)
+[main.ts:26](https://github.com/jonathanchowjh/nft-contracts/blob/1737845/utils/main.ts#L26)
