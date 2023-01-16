@@ -15,10 +15,10 @@ import {
 } from '../utils/env'
 
 async function main() {
-  await deployContractFromArtifacts("Utility", "utility", []);
-  console.log(await readJson("addresses", await addressName("utility")));
-  await wait(10000);
-  
+  // await deployContractFromArtifacts("Utility", "utility", []);
+  // console.log(await readJson("addresses", await addressName("utility")));
+  // await wait(10000);
+
   const TOKENS = [
     GOERLI_TOKEN_1,
     GOERLI_TOKEN_2,
