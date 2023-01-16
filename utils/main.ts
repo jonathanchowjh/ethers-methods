@@ -40,7 +40,7 @@ export const wallet = async (): Promise<ethers.Signer> => {
 };
 
 /**
- * This function adds one to its input.
+ * This function deploys contract, looking through Artifacts for the ABI matching the fileName provided.
  * @param {string} fileName Name of Contract file to find ABI
  * @param {string} contractName Name of Contract to index deployed addresses
  * @param {any[]} deployArgs Array of arguments to be deconstructed
@@ -64,10 +64,18 @@ export const deployContractFromArtifacts = async (
   return deployContract(fileList[0], contractName, deployArgs, await wallet());
 };
 
+/**
+ * This function deploys contract, with ABI path, deployArgs, and a Signer
+ * @param {string} contractAbi Absolute or Relative (to project root) path of ABI JSON file
+ * @param {string} contractName Name of Contract to index deployed addresses
+ * @param {any[]} deployArgs Array of arguments to be deconstructed
+ * @param {ethers.Signer} wallet Signer used to sign transactions
+ * @returns {Promise<string>} Address of Deployed Contract
+ */
 export const deployContract = async (
   contractAbi: string,
   contractName: string,
-  deployArgs: any,
+  deployArgs: any[],
   wallet: ethers.Signer
 ): Promise<string> => {
   const abi = await getJSON(contractAbi);
@@ -77,6 +85,14 @@ export const deployContract = async (
   return getAddress(contractName);
 };
 
+/**
+ * This function creates a contract interface with a deployed contract,
+ * looking through Artifacts for the ABI matching the fileName provided.
+ * @param {string} fileName Name of Contract file to find ABI
+ * @param {string} contractName Name of Contract to index deployed addresses
+ * @param {string} artifactLocation (Optional) File location of ABIs
+ * @returns {Promise<ethers.Contract>} Deployed Contract ethers Interface
+ */
 export const getContractFromArtifacts = async (
   fileName: string,
   contractName: string,
@@ -101,6 +117,13 @@ export const getContractFromArtifacts = async (
   return getContract(fileList[0], contractAddr, await wallet());
 };
 
+/**
+ * This function deploys contract, with ABI path, deployArgs, and a Signer
+ * @param {string} contractAbi Absolute or Relative (to project root) path of ABI JSON file
+ * @param {string} contractAddress Address of Deployed Contract
+ * @param {ethers.Signer} wallet Signer used to sign transactions
+ * @returns {Promise<ethers.Contract>} Deployed Contract ethers Interface
+ */
 export const getContract = async (
   contractAbi: string,
   contractAddress: string,

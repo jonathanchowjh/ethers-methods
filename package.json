@@ -33,7 +33,7 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "docs": "typedoc --plugin typedoc-plugin-markdown --out docs --hideInPageTOC --hideMembersSymbol --hideBreadcrumbs utils/main.ts",
+    "docs": "typedoc --plugin typedoc-plugin-markdown --out docs utils/main.ts",
     "prebuild": "npm run clean",
     "build": "tsc --module commonjs",
     "preversion": "npm run build",

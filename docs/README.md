@@ -1,3 +1,5 @@
+hardhat-sdk / [Exports](modules.md)
+
 # hardhat-sdk
 
 ### Pre-Install Hardhat Repo
