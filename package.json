@@ -1,6 +1,6 @@
 {
   "name": "hardhat-sdk",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "dist/index.js",
   "files": ["dist"],
   "author": "Jonathan Chow",
@@ -9,6 +9,12 @@
     "type": "git",
     "url": "https://github.com/jonathanchowjh/hardhat-sdk.git"
   },
+  "keywords": [
+    "hardhat",
+    "sdk",
+    "ethers",
+    "ethereum"
+  ],
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.1",
     "@openzeppelin/contracts": "^4.8.1",
