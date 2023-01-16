@@ -43,7 +43,7 @@
 
 #### Defined in
 
-[main.ts:17](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L17)
+[main.ts:17](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L17)
 
 ## Functions
 
@@ -63,7 +63,7 @@
 
 #### Defined in
 
-[main.ts:222](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L222)
+[main.ts:228](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L228)
 
 ___
 
@@ -90,7 +90,7 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:75](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L75)
+[main.ts:81](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L81)
 
 ___
 
@@ -99,6 +99,14 @@ ___
 ▸ **deployContractFromArtifacts**(`fileName`, `contractName`, `deployArgs`, `artifactLocation?`): `Promise`<`string`\>
 
 This function deploys contract, looking through Artifacts for the ABI matching the fileName provided.
+
+**`Example`**
+
+If there is a code block, then both TypeDoc and VSCode will treat
+text outside of the code block as regular text.
+```ts
+factorial(1)
+```
 
 #### Parameters
 
@@ -117,7 +125,7 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:50](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L50)
+[main.ts:56](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L56)
 
 ___
 
@@ -138,7 +146,7 @@ ___
 
 #### Defined in
 
-[main.ts:219](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L219)
+[main.ts:225](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L225)
 
 ___
 
@@ -158,7 +166,7 @@ ___
 
 #### Defined in
 
-[main.ts:158](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L158)
+[main.ts:164](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L164)
 
 ___
 
@@ -172,7 +180,7 @@ ___
 
 #### Defined in
 
-[main.ts:152](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L152)
+[main.ts:158](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L158)
 
 ___
 
@@ -198,7 +206,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:127](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L127)
+[main.ts:133](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L133)
 
 ___
 
@@ -225,7 +233,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:96](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L96)
+[main.ts:102](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L102)
 
 ___
 
@@ -246,7 +254,7 @@ ___
 
 #### Defined in
 
-[main.ts:245](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L245)
+[main.ts:251](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L251)
 
 ___
 
@@ -267,7 +275,7 @@ ___
 
 #### Defined in
 
-[main.ts:236](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L236)
+[main.ts:242](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L242)
 
 ___
 
@@ -287,7 +295,7 @@ ___
 
 #### Defined in
 
-[main.ts:230](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L230)
+[main.ts:236](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L236)
 
 ___
 
@@ -301,7 +309,7 @@ ___
 
 #### Defined in
 
-[main.ts:140](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L140)
+[main.ts:146](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L146)
 
 ___
 
@@ -323,7 +331,7 @@ ___
 
 #### Defined in
 
-[main.ts:176](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L176)
+[main.ts:182](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L182)
 
 ___
 
@@ -337,7 +345,7 @@ ___
 
 #### Defined in
 
-[main.ts:278](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L278)
+[main.ts:284](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L284)
 
 ___
 
@@ -359,7 +367,7 @@ ___
 
 #### Defined in
 
-[main.ts:165](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L165)
+[main.ts:171](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L171)
 
 ___
 
@@ -382,7 +390,7 @@ ___
 
 #### Defined in
 
-[main.ts:198](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L198)
+[main.ts:204](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L204)
 
 ___
 
@@ -402,7 +410,7 @@ ___
 
 #### Defined in
 
-[main.ts:147](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L147)
+[main.ts:153](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L153)
 
 ___
 
@@ -422,7 +430,7 @@ ___
 
 #### Defined in
 
-[main.ts:225](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L225)
+[main.ts:231](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L231)
 
 ___
 
@@ -442,7 +450,7 @@ ___
 
 #### Defined in
 
-[main.ts:262](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L262)
+[main.ts:268](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L268)
 
 ___
 
@@ -456,4 +464,4 @@ ___
 
 #### Defined in
 
-[main.ts:19](https://github.com/jonathanchowjh/nft-contracts/blob/e6ea242/utils/main.ts#L19)
+[main.ts:19](https://github.com/jonathanchowjh/nft-contracts/blob/6e79493/utils/main.ts#L19)

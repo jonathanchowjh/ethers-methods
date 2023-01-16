@@ -46,6 +46,12 @@ export const wallet = async (): Promise<ethers.Signer> => {
  * @param {any[]} deployArgs Array of arguments to be deconstructed
  * @param {string} artifactLocation (Optional) File location of ABIs
  * @returns {Promise<string>} Address of Deployed Contract
+ * @example
+ * If there is a code block, then both TypeDoc and VSCode will treat
+ * text outside of the code block as regular text.
+ * ```ts
+ * factorial(1)
+ * ```
  */
 export const deployContractFromArtifacts = async (
   fileName: string,
