@@ -49,9 +49,6 @@ export const wallet = async (): Promise<ethers.Signer> => {
  * @example
  * If there is a code block, then both TypeDoc and VSCode will treat
  * text outside of the code block as regular text.
- * ```ts
- * factorial(1)
- * ```
  */
 export const deployContractFromArtifacts = async (
   fileName: string,
