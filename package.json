@@ -1,10 +1,14 @@
 {
   "name": "hardhat-sdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/index.js",
   "files": ["dist"],
   "author": "Jonathan Chow",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathanchowjh/hardhat-sdk.git"
+  },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.1",
     "@openzeppelin/contracts": "^4.8.1",
