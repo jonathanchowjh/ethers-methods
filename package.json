@@ -1,6 +1,6 @@
 {
   "name": "hardhat-sdk",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "files": ["dist"],
   "author": "Jonathan Chow",
@@ -23,7 +23,7 @@
     "prebuild": "npm run clean",
     "build": "tsc --module commonjs",
     "preversion": "npm run build",
-    "postversion": "git push --follow-tags",
+    "postversion": "git add . && git commit -m 'publish' && git push --follow-tags",
     "version": "npm publish --access public",
     "chain_localhost": "ts-node ./utils/scripts.ts chain_localhost",
     "chain_goerli": "ts-node ./utils/scripts.ts chain_goerli",
