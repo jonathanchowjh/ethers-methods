@@ -28,12 +28,10 @@ import sdk from 'hardhat-sdk'
 
 const main = async () => {
   await sdk.setNetwork('goerli')
-  const now = new Date().getTime();
-  const MinutesFromNow = now + (1000 * 60 * 1);
   const addr = await sdk.deployContractFromArtifacts(
     'Lock',
     'lock',
-    [MinutesFromNow]
+    [new Date().getTime() + (1000 * 60 * 1), { value: 1 }]
   );
   return addr
 }
@@ -66,6 +64,7 @@ main()
 npx ts-node scripts/deploy.ts
 npx ts-node scripts/runTest.ts
 ```
+
 ### SDK Documentation
 ```
 wallet: () => Promise<import("ethers").Wallet>;
