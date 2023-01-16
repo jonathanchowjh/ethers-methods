@@ -43,7 +43,7 @@
 
 #### Defined in
 
-[main.ts:17](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L17)
+[main.ts:16](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L16)
 
 ## Functions
 
@@ -63,7 +63,7 @@
 
 #### Defined in
 
-[main.ts:225](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L225)
+[main.ts:259](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L259)
 
 ___
 
@@ -72,6 +72,18 @@ ___
 ▸ **deployContract**(`contractAbi`, `contractName`, `deployArgs`, `wallet`): `Promise`<`string`\>
 
 This function deploys contract, with ABI path, deployArgs, and a Signer
+
+**`Example`**
+
+```ts
+import sdk from 'hardhat-sdk';
+await sdk.deployContractFromArtifacts(
+   "artifacts/contracts/Utility.sol/Utility.json",
+   "utility",
+   [],
+   await sdk.wallet()
+);
+```
 
 #### Parameters
 
@@ -90,7 +102,7 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:78](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L78)
+[main.ts:98](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L98)
 
 ___
 
@@ -103,8 +115,8 @@ This function deploys contract, looking through Artifacts for the ABI matching t
 **`Example`**
 
 ```ts
-If there is a code block, then both TypeDoc and VSCode will treat
-text outside of the code block as regular text.
+import sdk from 'hardhat-sdk';
+await sdk.deployContractFromArtifacts("Utility", "utility", []);
 ```
 
 #### Parameters
@@ -124,7 +136,7 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:53](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L53)
+[main.ts:63](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L63)
 
 ___
 
@@ -145,7 +157,7 @@ ___
 
 #### Defined in
 
-[main.ts:222](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L222)
+[main.ts:256](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L256)
 
 ___
 
@@ -165,7 +177,7 @@ ___
 
 #### Defined in
 
-[main.ts:161](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L161)
+[main.ts:195](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L195)
 
 ___
 
@@ -179,7 +191,7 @@ ___
 
 #### Defined in
 
-[main.ts:155](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L155)
+[main.ts:189](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L189)
 
 ___
 
@@ -188,6 +200,17 @@ ___
 ▸ **getContract**(`contractAbi`, `contractAddress`, `wallet`): `Promise`<`Contract`\>
 
 This function deploys contract, with ABI path, deployArgs, and a Signer
+
+**`Example`**
+
+```ts
+import sdk from 'hardhat-sdk';
+await sdk.getContract(
+   "artifacts/contracts/Utility.sol/Utility.json",
+   "0x65B165C17a8660e84e4427c4024fcB784577AB05",
+   await sdk.wallet()
+);
+```
 
 #### Parameters
 
@@ -205,7 +228,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:130](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L130)
+[main.ts:164](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L164)
 
 ___
 
@@ -215,6 +238,13 @@ ___
 
 This function creates a contract interface with a deployed contract,
 looking through Artifacts for the ABI matching the fileName provided.
+
+**`Example`**
+
+```ts
+import sdk from 'hardhat-sdk';
+await sdk.getContractFromArtifacts("Utility", "utility");
+```
 
 #### Parameters
 
@@ -232,7 +262,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:99](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L99)
+[main.ts:124](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L124)
 
 ___
 
@@ -253,7 +283,7 @@ ___
 
 #### Defined in
 
-[main.ts:248](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L248)
+[main.ts:282](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L282)
 
 ___
 
@@ -274,7 +304,7 @@ ___
 
 #### Defined in
 
-[main.ts:239](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L239)
+[main.ts:273](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L273)
 
 ___
 
@@ -294,7 +324,7 @@ ___
 
 #### Defined in
 
-[main.ts:233](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L233)
+[main.ts:267](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L267)
 
 ___
 
@@ -308,7 +338,7 @@ ___
 
 #### Defined in
 
-[main.ts:143](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L143)
+[main.ts:177](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L177)
 
 ___
 
@@ -330,7 +360,7 @@ ___
 
 #### Defined in
 
-[main.ts:179](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L179)
+[main.ts:213](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L213)
 
 ___
 
@@ -344,7 +374,7 @@ ___
 
 #### Defined in
 
-[main.ts:281](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L281)
+[main.ts:315](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L315)
 
 ___
 
@@ -366,7 +396,7 @@ ___
 
 #### Defined in
 
-[main.ts:168](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L168)
+[main.ts:202](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L202)
 
 ___
 
@@ -389,7 +419,7 @@ ___
 
 #### Defined in
 
-[main.ts:201](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L201)
+[main.ts:235](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L235)
 
 ___
 
@@ -409,7 +439,7 @@ ___
 
 #### Defined in
 
-[main.ts:150](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L150)
+[main.ts:184](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L184)
 
 ___
 
@@ -429,7 +459,7 @@ ___
 
 #### Defined in
 
-[main.ts:228](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L228)
+[main.ts:262](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L262)
 
 ___
 
@@ -449,7 +479,7 @@ ___
 
 #### Defined in
 
-[main.ts:265](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L265)
+[main.ts:299](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L299)
 
 ___
 
@@ -457,10 +487,21 @@ ___
 
 ▸ **wallet**(): `Promise`<`Signer`\>
 
+This function returns a Signer connected to a provider, given the appropriate network
+
+**`Example`**
+
+```ts
+import sdk from 'hardhat-sdk';
+await wallet();
+```
+
 #### Returns
 
 `Promise`<`Signer`\>
 
+Signer used to sign transactions
+
 #### Defined in
 
-[main.ts:19](https://github.com/jonathanchowjh/nft-contracts/blob/6aab2b7/utils/main.ts#L19)
+[main.ts:27](https://github.com/jonathanchowjh/nft-contracts/blob/740ee90/utils/main.ts#L27)

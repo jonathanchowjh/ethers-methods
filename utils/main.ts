@@ -3,10 +3,9 @@ import path from "path";
 import { ethers, ContractFactory, Wallet } from "ethers";
 import { PRIVATE_KEY_1, GOERLI_RPC_URL } from "./env";
 
-
- // =====================================
- // HARDHAT FUNCTIONS
- // =====================================
+// =====================================
+// HARDHAT FUNCTIONS
+// =====================================
 
 declare global {
   interface Window {
@@ -16,6 +15,15 @@ declare global {
 
 export type KeyStringAny = { [k: string]: any };
 
+/**
+ * This function returns a Signer connected to a provider, given the appropriate network
+ * @returns {Promise<ethers.Signer>} Signer used to sign transactions
+ * @example
+ * ```ts
+ * import sdk from 'hardhat-sdk';
+ * await wallet();
+ * ```
+ */
 export const wallet = async (): Promise<ethers.Signer> => {
   const network = await getNetwork();
   if (network == "localhost" || network == "hardhat") {
@@ -47,8 +55,10 @@ export const wallet = async (): Promise<ethers.Signer> => {
  * @param {string} artifactLocation (Optional) File location of ABIs
  * @returns {Promise<string>} Address of Deployed Contract
  * @example
- * If there is a code block, then both TypeDoc and VSCode will treat
- * text outside of the code block as regular text.
+ * ```ts
+ * import sdk from 'hardhat-sdk';
+ * await sdk.deployContractFromArtifacts("Utility", "utility", []);
+ * ```
  */
 export const deployContractFromArtifacts = async (
   fileName: string,
@@ -74,6 +84,16 @@ export const deployContractFromArtifacts = async (
  * @param {any[]} deployArgs Array of arguments to be deconstructed
  * @param {ethers.Signer} wallet Signer used to sign transactions
  * @returns {Promise<string>} Address of Deployed Contract
+ * @example
+ * ```ts
+ * import sdk from 'hardhat-sdk';
+ * await sdk.deployContractFromArtifacts(
+ *    "artifacts/contracts/Utility.sol/Utility.json",
+ *    "utility",
+ *    [],
+ *    await sdk.wallet()
+ * );
+ * ```
  */
 export const deployContract = async (
   contractAbi: string,
@@ -95,6 +115,11 @@ export const deployContract = async (
  * @param {string} contractName Name of Contract to index deployed addresses
  * @param {string} artifactLocation (Optional) File location of ABIs
  * @returns {Promise<ethers.Contract>} Deployed Contract ethers Interface
+ * @example
+ * ```ts
+ * import sdk from 'hardhat-sdk';
+ * await sdk.getContractFromArtifacts("Utility", "utility");
+ * ```
  */
 export const getContractFromArtifacts = async (
   fileName: string,
@@ -126,6 +151,15 @@ export const getContractFromArtifacts = async (
  * @param {string} contractAddress Address of Deployed Contract
  * @param {ethers.Signer} wallet Signer used to sign transactions
  * @returns {Promise<ethers.Contract>} Deployed Contract ethers Interface
+ * @example
+ * ```ts
+ * import sdk from 'hardhat-sdk';
+ * await sdk.getContract(
+ *    "artifacts/contracts/Utility.sol/Utility.json",
+ *    "0x65B165C17a8660e84e4427c4024fcB784577AB05",
+ *    await sdk.wallet()
+ * );
+ * ```
  */
 export const getContract = async (
   contractAbi: string,
