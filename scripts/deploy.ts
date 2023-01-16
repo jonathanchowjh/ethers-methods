@@ -1,27 +1,42 @@
-import { ethers } from "hardhat";
-import { saveAddress, readJson, addressName } from "../utils/main";
+import {
+  deployContractFromArtifacts,
+  getContractFromArtifacts,
+  readJson,
+  addressName,
+  wait
+} from "../utils/main";
+
+import {
+  GOERLI_TOKEN_1,
+  GOERLI_TOKEN_2,
+  GOERLI_TOKEN_3,
+  GOERLI_TOKEN_4,
+  PUBLIC_KEY_1,
+} from '../utils/env'
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
-
-  const lockedAmount = ethers.utils.parseEther("0.0001");
-
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
-
-  await lock.deployed();
-
-  await saveAddress("lock", lock.address);
-  console.log(await readJson("addresses", addressName("lock")));
-
-  console.log(`Lock with ${lockedAmount} ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
+  await deployContractFromArtifacts("Utility", "utility", []);
+  console.log(await readJson("addresses", await addressName("utility")));
+  await wait(10000);
+  
+  const TOKENS = [
+    GOERLI_TOKEN_1,
+    GOERLI_TOKEN_2,
+    GOERLI_TOKEN_3,
+    GOERLI_TOKEN_4
+  ]
+  const utilityContract = await getContractFromArtifacts('Utility', 'utility');
+  const balances = await utilityContract.getBalances(PUBLIC_KEY_1, TOKENS);
+  let ret = [...TOKENS];
+  return ret.map((val, idx) => ({
+    token: val,
+    balance: balances[idx].toNumber()
+  }));
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(val => console.log(val))
+  .catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });

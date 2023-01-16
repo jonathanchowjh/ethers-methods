@@ -1,13 +1,17 @@
 {
   "name": "hardhat-project",
-  "scripts": {
-    "test_main": "ts-node ./sdk/test_main.ts",
-    "deploy": "npx hardhat run scripts/deploy.ts --network goerli"
-  },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^1.0.2",
-    "@nomiclabs/hardhat-waffle": "^2.0.3",
-    "dotenv": "^16.0.3",
-    "hardhat": "^2.12.5"
+    "@nomicfoundation/hardhat-toolbox": "^2.0.1",
+    "@openzeppelin/contracts": "^4.8.1",
+    "fs": "^0.0.1-security",
+    "hardhat": "^2.12.6",
+    "path": "^0.12.7",
+    "dotenv": "^16.0.3"
+  },
+  "scripts": {
+    "chain_localhost": "ts-node ./utils/scripts.ts chain_localhost",
+    "chain_goerli": "ts-node ./utils/scripts.ts chain_goerli",
+    "chain_read": "ts-node ./utils/scripts.ts chain_read",
+    "deploy": "ts-node ./scripts/deploy.ts"
   }
 }

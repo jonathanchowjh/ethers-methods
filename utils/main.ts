@@ -1,47 +1,7 @@
-import { HardhatEthersHelpers } from "./@types/ethers/ethers";
-import { network, run } from "hardhat";
-import { Contract, ethers } from "ethers";
-import fs from "fs";
+import fs, { read } from "fs";
 import path from "path";
-
-import { DEV_CHAINS, GOERLI_RPC_URL, PRIVATE_KEY_1 } from "./env";
-
-
-export const getProviderEthers = (
-  network: string
-) => {
-  let RPC_URL = GOERLI_RPC_URL;
-  if (network == 'goerli') RPC_URL = GOERLI_RPC_URL;
-  if (network == 'homestead') RPC_URL = GOERLI_RPC_URL;
-  return new ethers.providers.JsonRpcProvider(RPC_URL);
-}
-
-export const getWalletEthers = (
-  network: string
-) => {
-  return new ethers.Wallet(PRIVATE_KEY_1, getProviderEthers(network));
-}
-
-export const getContractEthers = (
-  address: string,
-  ERC20_ABI: any,
-  provider: any,
-  wallet: any,
-) => {
-  const contract = new ethers.Contract(address, ERC20_ABI, provider)
-  contract.connect(wallet);
-  return contract
-}
-
-export const deployContractEthers = async (
-  bytecode: string,
-  ERC20_ABI: any,
-  wallet: any,
-) => {
-  const factory = new ethers.ContractFactory(ERC20_ABI, bytecode, wallet)
-  const contract = await factory.deploy(ethers.utils.parseUnits("100"));
-  return contract
-}
+import { ethers, ContractFactory, Wallet } from "ethers";
+import { PRIVATE_KEY_1, GOERLI_RPC_URL } from "./env";
 
 /**
  * =====================================
@@ -57,87 +17,64 @@ export const deployContractEthers = async (
  * - deployContract(ethers, name, args) - TODO
  * =====================================
  */
-export const getNetwork = () => network.name;
-export const getChainId = () => network.config.chainId!.toString();
-export const isDevChain = () => DEV_CHAINS.includes(getNetwork());
 
+export const wallet = async () => {
+  const network = await getNetwork();
+  if (network == "localhost" || network == "hardhat") {
+    const provider = new ethers.providers.JsonRpcProvider(
+      "http://127.0.0.1:8545/"
+    );
+    const wallet = new Wallet(PRIVATE_KEY_1).connect(provider);
+    return wallet;
+  }
+  if (network == "goerli") {
+    const provider = new ethers.providers.JsonRpcProvider(GOERLI_RPC_URL);
+    const wallet = new Wallet(PRIVATE_KEY_1).connect(provider);
+    return wallet;
+  }
+  throw new Error("Invalid Network");
+};
 
-export const getAccounts = async (ethers: HardhatEthersHelpers) =>
-  ethers.getSigners();
+export const deployContractFromArtifacts = async (
+  fileName: string,
+  contractName: string,
+  deployArgs: any
+) => {
+  const fileList: string[] = await getFilePathFromArtifacts(fileName);
+  if (fileList.length == 0) throw new Error(`Invalid File`);
+  return deployContract(fileList[0], contractName, deployArgs, await wallet());
+};
 
-export const getDeployer = async (ethers: HardhatEthersHelpers) => {
-  const [deployer] = await ethers.getSigners();
-  return deployer;
+export const deployContract = async (
+  contractAbi: string,
+  contractName: string,
+  deployArgs: any,
+  wallet: ethers.Signer
+) => {
+  const abi = await getJSON(contractAbi);
+  const factory = new ContractFactory(abi.abi, abi.bytecode, wallet);
+  const contract = await factory.deploy(...deployArgs);
+  await saveAddress(contractName, contract.address);
+  return readJson("addresses", await addressName(contractName));
+};
+
+export const getContractFromArtifacts = async (fileName: string, contractName: string) => {
+  const fileList: string[] = await getFilePathFromArtifacts(fileName);
+  if (fileList.length == 0) throw new Error(`Invalid File`);
+  return getContract(
+    fileList[0],
+    await readJson("addresses", await addressName(contractName)),
+    await wallet()
+  );
 };
 
 export const getContract = async (
-  ethers: HardhatEthersHelpers,
-  name: string,
-  contractName: string
-): Promise<Contract> => {
-  const address = await readJson("addresses", addressName(name));
-  if (address === undefined) throw new Error("getContract address not found");
-  const contract = await ethers.getContractAt(contractName, address);
-  return contract;
-};
-
-export const moveBlocks = async (amount: number) => {
-  for (let index = 0; index < amount; index++) {
-    await network.provider.request({
-      method: "evm_mine",
-      params: [],
-    });
-  }
-  // eslint-disable-next-line
-  console.log(`Moved ${amount} blocks`);
-};
-
-export const moveTime = async (amount: number) => {
-  await network.provider.send("evm_increaseTime", [amount]);
-  // eslint-disable-next-line
-  console.log(`Moved forward in time ${amount} seconds`);
-};
-
-export const listenEvent = (
-  event: string,
-  contract: Contract
-): Promise<any[]> =>
-  new Promise((resolve) => {
-    contract.on(event, (...args) => {
-      resolve([...args]);
-    });
-  });
-
-export const verify = async (
+  contractAbi: string,
   contractAddress: string,
-  args: any[]
-): Promise<void> => {
-  try {
-    await run("verify:verify", {
-      address: contractAddress,
-      constructorArguments: args,
-    });
-  } catch (e: any) {
-    if (e.message.toLowerCase().includes("already verified")) {
-      // eslint-disable-next-line
-      console.log("Already verified!");
-    } else {
-      // eslint-disable-next-line
-      console.log(e);
-    }
-  }
-};
-
-// TODO: deployed contract returns undeployed ContractFactory
-export const deployContract = async (
-  ethers: HardhatEthersHelpers,
-  name: string,
-  args: []
+  wallet: ethers.Signer
 ) => {
-  const ContractDeploy = await ethers.getContractFactory(name);
-  const contract = await ContractDeploy.deploy(...args);
-  await contract.deployed();
-  return [ContractDeploy, contract];
+  const abi = await getJSON(contractAbi);
+  return new ethers.Contract(contractAddress, abi.abi, wallet);
 };
 
 /**
@@ -152,21 +89,38 @@ export const deployContract = async (
  * - wait(time)
  * =====================================
  */
-//
+
+// ===================================
+// GET SET NETWORK
+// ===================================
+export const getNetwork = async () => {
+  return readJson("chain", "network");
+};
+export const setNetwork = async (networkName: string) => {
+  await saveJson("chain", "network", networkName);
+  return getNetwork();
+};
+
+// ===================================
+// GET SAVE ADDRESSES
+// ===================================
+export const getAddresses = async () => {
+  const object = await readJson();
+  if (!object || !object.addresses) return {};
+  return filterObj(object.addresses, await getNetwork());
+};
+
 export const saveAddress = async (
   name: string,
   value: string,
   file?: string
 ) => {
-  await saveJson("addresses", addressName(name), value, file);
+  await saveJson("addresses", await addressName(name), value, file);
 };
 
-export const getAddresses = async () => {
-  const object = await readJson();
-  if (!object || !object.addresses) return {};
-  return filterObj(object.addresses, getNetwork());
-};
-
+// ===================================
+// READ WRITE JSON
+// ===================================
 export const readJson = async (type?: string, name?: string, file?: string) => {
   const fileName = file || "json/constants.json";
   const rawdata = await fs.promises.readFile(path.resolve(__dirname, fileName));
@@ -200,12 +154,61 @@ export const saveJson = async (
   );
 };
 
+// ===================================
+// MISC HELPER FUNCTIONS
+// ===================================
 export const filterObj = (obj: Object, str: string) =>
   Object.fromEntries(Object.entries(obj).filter(([key]) => key.includes(str)));
 
-export const addressName = (name: string) => `${getNetwork()}-${name}`;
+export const addressName = async (name: string) =>
+  `${await getNetwork()}-${name}`;
 
 export const wait = (ms: number) =>
   new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
+
+export const getJSON = async (file: string) => {
+  const rawdata = await fs.promises.readFile(path.resolve(__dirname, file));
+  const data = JSON.parse(rawdata.toString());
+  return data;
+};
+
+export const getFilePathFromArtifacts = async (
+  fileName: string
+): Promise<string[]> => {
+  return getFilePath(path.resolve(__dirname, "../artifacts"), fileName);
+};
+
+export const getFilePath = async (
+  currentDirPath: string,
+  fileName: string
+): Promise<string[]> => {
+  const fileList = await walk(currentDirPath);
+  const filteredFileList: string[] = fileList.flat(Infinity).filter((val) => {
+    if (val == undefined) return false;
+    let fileNameArr = val.split("/");
+    fileNameArr = fileNameArr[fileNameArr.length - 1].split(".");
+    if (fileNameArr.length < 2) return false;
+    if (fileNameArr[0] != fileName) return false;
+    if (fileNameArr[1] == "dbg") return false;
+    return true;
+  }) as string[];
+  return filteredFileList;
+};
+
+export const walk = async (dir: string) => {
+  let files = await fs.promises.readdir(dir);
+  files = (await Promise.all(
+    files.map(async (file) => {
+      const filePath = path.join(dir, file);
+      const stats = await fs.promises.stat(filePath);
+      if (stats.isDirectory()) return walk(filePath);
+      else if (stats.isFile()) return filePath;
+    })
+  )) as string[];
+  return files.map((val) => {
+    if (val == undefined) return;
+    return val;
+  });
+};

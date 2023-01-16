@@ -1,47 +1,8 @@
-import { task } from "hardhat/config";
-import "@nomiclabs/hardhat-waffle";
-import { GOERLI_RPC_URL, PRIVATE_KEY_1, PRIVATE_KEY_2 } from "./utils/env";
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
 
-import "dotenv/config";
-
-// This is a sample Hardhat task. To learn how to create your own go to
-// https://hardhat.org/guides/create-task.html
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
-  const accounts = await hre.ethers.getSigners();
-  for (let i = 0; i < accounts.length; i++) {
-    // eslint-disable-next-line
-    console.log(accounts[i].address);
-  }
-});
-
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
-
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
-export default {
-  defaultNetwork: "hardhat",
-  networks: {
-    hardhat: {
-      chainId: 31337,
-      allowUnlimitedContractSize: false,
-    },
-    localhost: {
-      chainId: 31337,
-      allowUnlimitedContractSize: false,
-    },
-    goerli: {
-      url: GOERLI_RPC_URL,
-      accounts: [PRIVATE_KEY_1, PRIVATE_KEY_2],
-      chainId: 5,
-    },
-  },
-  solidity: "0.8.9",
-  settings: {
-    optimizer: {
-      enabled: true,
-      runs: 2000,
-    },
-  },
+const config: HardhatUserConfig = {
+  solidity: "0.8.17",
 };
+
+export default config;
