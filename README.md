@@ -1,8 +1,14 @@
 # hardhat-sdk
 
+### Pre-Install Hardhat Repo
+```
+mkdir appName && cd appName
+npx hardhat   // options: typescript-project, hardhat-toolbox
+```
+
 ### Install
 ```
-npm i -D ethers dotenv
+npm i -D ethers dotenv hardhat-sdk
 mkdir utils && mkdir utils/json && touch utils/json/constants.json
 touch .env
 ```
