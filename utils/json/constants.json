@@ -1,15 +1,1 @@
-{
-  "addresses": {
-    "localhost-token1": "0x9d4454B023096f34B160D6B654540c56A1F81688",
-    "localhost-token2": "0x5eb3Bc0a489C5A8288765d2336659EbCA68FCd00",
-    "localhost-token3": "0x36C02dA8a0983159322a80FFE9F24b1acfF8B570",
-    "localhost-token4": "0x809d550fca64d94Bd9F66E60752A544199cfAC3D",
-    "localhost-utility": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
-    "goerli-token1": "0x1d9EddB94868148ef955A7234c527b3bb1483462",
-    "goerli-token2": "0xd40CbdeFa404A6092AFa265BdD69bA531c73458D",
-    "goerli-token3": "0x0b0DDE4d7eD00D3bB472a009ecEeFFdD894323b3",
-    "goerli-token4": "0x9e6795350AD0B0Bf55Cf29F78100CAf6acc6F84B",
-    "goerli-utility": "0x9744E175e499aab57105C252e39FC142fdEa74b0"
-  },
-  "chain": { "network": "goerli" }
-}
+{"addresses":{"localhost-token1":"0x9d4454B023096f34B160D6B654540c56A1F81688","localhost-token2":"0x5eb3Bc0a489C5A8288765d2336659EbCA68FCd00","localhost-token3":"0x36C02dA8a0983159322a80FFE9F24b1acfF8B570","localhost-token4":"0x809d550fca64d94Bd9F66E60752A544199cfAC3D","localhost-utility":"0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9","goerli-token1":"0x1d9EddB94868148ef955A7234c527b3bb1483462","goerli-token2":"0xd40CbdeFa404A6092AFa265BdD69bA531c73458D","goerli-token3":"0x0b0DDE4d7eD00D3bB472a009ecEeFFdD894323b3","goerli-token4":"0x9e6795350AD0B0Bf55Cf29F78100CAf6acc6F84B","goerli-utility":"0x6fc294DC8756dC01dcE0014A413dD5d2b1C8e10b"},"chain":{"network":"goerli"}}
