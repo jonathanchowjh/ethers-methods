@@ -9,7 +9,7 @@ export const RINKEBY_RPC_URL =
   process.env.RINKEBY_RPC_URL || "https://rinkeby.infura.io/v3/your-api-key";
 export const GOERLI_RPC_URL =
   process.env.GOERLI_RPC_URL || "https://goerli.infura.io/v3/your-api-key";
-export const PRIVATE_KEY_1 = process.env.PRIVATE_KEY_1 || "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
+export const PRIVATE_KEY_1 = process.env.PRIVATE_KEY_1 || "privatKey";
 export const PRIVATE_KEY_2 = process.env.PRIVATE_KEY_2 || "privatKey";
 
 export const PUBLIC_KEY_1 = process.env.PUBLIC_KEY_1 || "0x2Ce13D32B60dd0E89beE5D911F3F47B5E539df8F";

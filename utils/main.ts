@@ -6,15 +6,6 @@ import { PRIVATE_KEY_1, GOERLI_RPC_URL } from "./env";
 /**
  * =====================================
  * HARDHAT FUNCTIONS
- * - getNetwork()                                 getNetwork()
- * - isDevChain()                                 isDevChain()
- * - getDeployer(ethers)                          await getDeployer(ethers)
- * - getContract(ethers, name)                    await getContract(ethers, "Box")
- * - moveBlocks(amount)                           await moveBlocks(1)
- * - moveTime(amount)                             await moveTime(1)
- * - listenEvent(event, contract)                 await listenEvent("Transfer", this.contract);
- * - verify(address, args) - TODO
- * - deployContract(ethers, name, args) - TODO
  * =====================================
  */
 
@@ -80,13 +71,6 @@ export const getContract = async (
 /**
  * =====================================
  * CONTRACT ADDRESSES (json formatting)
- * - saveAddress(name, value, file?)      await saveAddress("GovernanceToken", token.address);
- * - getAddresses()                       await getAddresses()
- * - readJson(type?, name?, file?)        await readJson("addresses", addressName(name));
- * - saveJson(type, name, value, file?)
- * - filterObj(obj, str)
- * - addressName(name)
- * - wait(time)
  * =====================================
  */
 
@@ -122,8 +106,8 @@ export const saveAddress = async (
 // READ WRITE JSON
 // ===================================
 export const readJson = async (type?: string, name?: string, file?: string) => {
-  const fileName = file || "json/constants.json";
-  const rawdata = await fs.promises.readFile(path.resolve(__dirname, fileName));
+  const fileName = file || "utils/json/constants.json";
+  const rawdata = await fs.promises.readFile(path.resolve(rootFolder(), fileName));
   let object;
   /* eslint-disable no-empty */
   try {
@@ -147,9 +131,9 @@ export const saveJson = async (
   if (object === undefined) object = {};
   if (object[type] === undefined) object[type] = {};
   object[type][name] = value;
-  const fileName = file || "json/constants.json";
+  const fileName = file || "utils/json/constants.json";
   await fs.promises.writeFile(
-    path.resolve(__dirname, fileName),
+    path.resolve(rootFolder(), fileName),
     JSON.stringify(object)
   );
 };
@@ -169,7 +153,7 @@ export const wait = (ms: number) =>
   });
 
 export const getJSON = async (file: string) => {
-  const rawdata = await fs.promises.readFile(path.resolve(__dirname, file));
+  const rawdata = await fs.promises.readFile(path.resolve(rootFolder(), file));
   const data = JSON.parse(rawdata.toString());
   return data;
 };
@@ -177,7 +161,7 @@ export const getJSON = async (file: string) => {
 export const getFilePathFromArtifacts = async (
   fileName: string
 ): Promise<string[]> => {
-  return getFilePath(path.resolve(__dirname, "../artifacts"), fileName);
+  return getFilePath(path.resolve(rootFolder(), 'artifacts/'), fileName);
 };
 
 export const getFilePath = async (
@@ -212,3 +196,11 @@ export const walk = async (dir: string) => {
     return val;
   });
 };
+
+const rootFolder = () => {
+  return __dirname.includes('node_modules') ? (
+    __dirname.split('node_modules')[0]
+  ): (
+    path.resolve(__dirname, "../")
+  );
+}

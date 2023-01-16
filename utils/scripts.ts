@@ -1,6 +1,6 @@
 import { getNetwork, setNetwork, deployContractFromArtifacts } from './main';
 
-const main = async () => {
+export const main = async () => {
   if (process.argv.length < 3) throw new Error(`Invalid process.argv array`);
   switch (process.argv[2]) {
     case 'chain_localhost':

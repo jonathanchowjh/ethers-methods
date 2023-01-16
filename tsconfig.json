@@ -1,10 +1,12 @@
 {
+  "include": ["utils"],
   "compilerOptions": {
     "target": "es2020",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "dist",
     "strict": true,
-    "skipLibCheck": true
+    "esModuleInterop": true
   }
 }
