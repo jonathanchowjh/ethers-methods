@@ -165,7 +165,7 @@ export const getContract = async (
 
 /**
  * This function returns the current NETWORK
- * @returns {Promise<string>} current network (localhost / hardhat / goerli / web3)
+ * @returns {Promise<string>} current network (localhost / hardhat / goerli)
  * @example
  * ```ts
  * await sdk.getNetwork();
@@ -181,7 +181,7 @@ export const getNetwork = async (): Promise<string> => {
 /**
  * This function changes the current NETWORK
  * @param {string} networkName name of NETWORK name to change to
- * @returns {Promise<string>} current network (localhost / hardhat / goerli / web3)
+ * @returns {Promise<string>} current network (localhost / hardhat / goerli)
  * @example
  * ```ts
  * await setNetwork("goerli");

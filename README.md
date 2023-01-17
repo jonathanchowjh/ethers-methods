@@ -26,54 +26,34 @@ JSON_LOCATION='utils/json/constants.json'
 ### Using the SDK
 
 - RUN `npx hardhat compile`
-- Create deploy scripts with ethers-sdk
+- Create deploy and contract scripts with ethers-sdk
 
-```
-// File: scripts/deploy.ts
-import sdk from 'ethers-sdk';
-
-const main = async () => {
-  await sdk.setNetwork('goerli');
-  await sdk.createIfNotExist(sdk.rootFolder(), sdk.JSON_LOCATION);
-  const addr = await sdk.deployContractFromArtifacts(
-    'Lock',
-    'lock',
-    [new Date().getTime() + (1000 * 60 * 1), { value: 1 }]
-  );
-  return addr
-}
-
-main()
-  .then(val => console.log(val))
-  .catch(err => console.error(err));
-```
-
-- Create contract scripts with ethers-sdk
-
-```
+```ts
 // File: scripts/runTest.ts
-import sdk from 'ethers-sdk'
+import sdk from "ethers-sdk";
 
 const main = async () => {
-  await sdk.setNetwork('goerli');
+  await sdk.setNetwork("goerli");
   await sdk.createIfNotExist(sdk.rootFolder(), sdk.JSON_LOCATION);
-  const lockContract = await sdk.getContractFromArtifacts(
-    'Lock',
-    'lock'
-  );
+  const addr = await sdk.deployContractFromArtifacts("Lock", "lock", [
+    new Date().getTime(),
+    { value: 1 },
+  ]);
+  await sdk.wait(10000);
+
+  const lockContract = await sdk.getContractFromArtifacts("Lock", "lock");
   const ret = await lockContract.withdraw();
   return ret;
-}
+};
 
 main()
-  .then(val => console.log(val))
-  .catch(err => console.error(err));
+  .then((val) => console.log(val))
+  .catch((err) => console.error(err));
 ```
 
 - Run scripts in order
 
 ```
-npx ts-node scripts/deploy.ts
 npx ts-node scripts/runTest.ts
 ```
 
@@ -336,7 +316,7 @@ await setNetwork("goerli");
 
 `Promise`<`string`\>
 
-current network (localhost / hardhat / goerli / web3)
+current network (localhost / hardhat / goerli)
 
 ---
 
@@ -357,3 +337,11 @@ await wallet();
 `Promise`<`Signer`\>
 
 Signer used to sign transactions
+
+## SDK Expansion
+
+- Unit / Integration Testing
+- Set up hardhat JSONRPC
+- Set up IPFS calls
+- Event Listener and Logger
+- Syntactic security analysis of contracts
