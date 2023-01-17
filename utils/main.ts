@@ -12,7 +12,7 @@ import {
 // HARDHAT FUNCTIONS
 // =====================================
 
-export type ObjAny = { [k: string]: any };
+export type ObjectAny = { [k: string]: any };
 
 /**
  * This function returns a Signer connected to a provider, given the appropriate network
@@ -73,7 +73,7 @@ export const deployContractFromArtifacts = async (
  * @param {string} contractAbi Absolute or Relative (to project root) path of ABI JSON file
  * @param {string} contractName Name of Contract to index deployed addresses
  * @param {any[]} deployArgs Array of arguments to be deconstructed
- * @param {ethers.Signer} wallet Signer used to sign transactions
+ * @param {ethers.Signer} signer Signer used to sign transactions
  * @returns {Promise<string>} Address of Deployed Contract
  * @example
  * ```ts
@@ -138,7 +138,7 @@ export const getContractFromArtifacts = async (
  * This function creates a contract interface with a deployed contract.
  * @param {string} contractAbi Absolute or Relative (to project root) path of ABI JSON file
  * @param {string} contractAddress Address of Deployed Contract
- * @param {ethers.Signer} wallet Signer used to sign transactions
+ * @param {ethers.Signer} signer Signer used to sign transactions
  * @returns {Promise<ethers.Contract>} Deployed Contract ethers Interface
  * @example
  * ```ts
@@ -194,25 +194,45 @@ export const setNetwork = async (networkName: string): Promise<string> => {
 
 /**
  * This function returns list of all saved addresses of deployed contracts
- * @returns {Promise<ObjAny>} list of all saved addresses of deployed contracts
+ * @returns {Promise<ObjectAny>} list of all saved addresses of deployed contracts
  * @example
  * ```ts
  * await getAddresses();
  * ```
  */
-export const getAddresses = async (): Promise<ObjAny> => {
+export const getAddresses = async (): Promise<ObjectAny> => {
   const object = await readJson();
   if (!object || typeof object === "string" || !object.addresses) return {};
   return filterObj(object.addresses, await getNetwork());
 };
 
+/**
+ * This function returns the saved address of given contract
+ * @param {string} contractName Name of Contract to get indexed deployed addresses
+ * @returns {Promise<string>} Saved address of given contract
+ * @example
+ * ```ts
+ * await getAddress('utility');
+ * ```
+ */
 export const getAddress = async (contractName: string): Promise<string> => {
   const addr = await readJson(ADDR_IDENT, await addressName(contractName));
   if (typeof addr !== "string")
-    throw new Error("hardhat-sdk::getNetwork::invalid-address");
+    throw new Error("hardhat-sdk::getAddress::invalid-address");
   return addr;
 };
 
+/**
+ * This function saves the address given a contract name
+ * @param {string} name Name of Contract to index deployed addresses
+ * @param {string} value Value of address to save
+ * @param {string} file (Optional) File to save address in
+ * @returns {Promise<void>} Promise to save address of given contract
+ * @example
+ * ```ts
+ * await saveAddress('utility', '0x4d391169EcF040072d8Da35d70166f70254B32C7');
+ * ```
+ */
 export const saveAddress = async (
   name: string,
   value: string,
@@ -222,11 +242,23 @@ export const saveAddress = async (
 // ===================================
 // READ WRITE JSON
 // ===================================
+
+/**
+ * This reads json file given type and name
+ * @param {string} type (Optional) Type of saved data (eg. addresses)
+ * @param {string} name (Optional) Name of saved data (eg. goerli-utility)
+ * @param {string} file (Optional) File that data is saved in
+ * @returns {Promise<ObjectAny | string | undefined>} Object or string, depending on input
+ * @example
+ * ```ts
+ * await readJson('addresses', 'goerli-utility');
+ * ```
+ */
 export const readJson = async (
   type?: string,
   name?: string,
   file?: string
-): Promise<ObjAny | string | undefined> => {
+): Promise<ObjectAny | string | undefined> => {
   const fileName = file || JSON_LOCATION;
   await checkIfNotExist(rootFolder(), fileName);
   const rawdata = await fs.promises.readFile(
@@ -245,6 +277,22 @@ export const readJson = async (
   return undefined;
 };
 
+/**
+ * This saves to json file given type, name, and value
+ * @param {string} type Type of saved data (eg. addresses)
+ * @param {string} name Name of saved data (eg. goerli-utility)
+ * @param {string} value Value of saved data (eg. 0x65B165C17a8660e84e4427c4024fcB784577AB05)
+ * @param {string} file (Optional) File that data is saved in
+ * @returns {Promise<void>} Promise to finish writing to file
+ * @example
+ * ```ts
+ * await saveJson(
+ *    'addresses',
+ *    'goerli-utility',
+ *    '0x65B165C17a8660e84e4427c4024fcB784577AB05'
+ * );
+ * ```
+ */
 export const saveJson = async (
   type: string,
   name: string,
@@ -267,23 +315,77 @@ export const saveJson = async (
 // ===================================
 // MISC HELPER FUNCTIONS
 // ===================================
-export const filterObj = (obj: Object, str: string): ObjAny =>
+
+/**
+ * Filter Object by its key value
+ * @param {Object} obj Object to filter through
+ * @param {string} str Value to filter by
+ * @returns {ObjectAny} Filtered Object
+ * @example
+ * ```ts
+ * filterObj(
+ *    {
+ *      'goerli-utility'
+ *      'localhost-utility'
+ *    },
+ *    'goerli'
+ * );
+ * ```
+ */
+export const filterObj = (obj: Object, str: string): ObjectAny =>
   Object.fromEntries(Object.entries(obj).filter(([key]) => key.includes(str)));
 
+/**
+ * Concat network name with contract name
+ * @param {string} name Name of Contract to index deployed addresses
+ * @returns {Promise<string>} concatenated network name with contract name
+ * @example
+ * ```ts
+ * await addressName('utility');
+ * ```
+ */
 export const addressName = async (name: string): Promise<string> =>
   `${await getNetwork()}-${name}`;
 
+/**
+ * Promise that waits for given number of milliseconds
+ * @param {number} ms milliseconds to wait for
+ * @returns {Promise<void>} Promise that waits for given number of milliseconds
+ * @example
+ * ```ts
+ * await wait(1000);
+ * ```
+ */
 export const wait = (ms: number): Promise<void> =>
   new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 
-export const getJSON = async (file: string): Promise<ObjAny> => {
+/**
+ * Parsed JSON given file (absolute path / relative path to root)
+ * @param {string} file file path to read
+ * @returns {Promise<ObjectAny>} JSON Object
+ * @example
+ * ```ts
+ * await getJSON('utils/json/constants.json');
+ * ```
+ */
+export const getJSON = async (file: string): Promise<ObjectAny> => {
   const rawdata = await fs.promises.readFile(path.resolve(rootFolder(), file));
   const data = JSON.parse(rawdata.toString());
   return data;
 };
 
+/**
+ * Getting File Path from Artifacts
+ * @param {string} fileName name of file (eg. 'Utility' given Utility.sol)
+ * @param {string} artifactLocation (Optional) artifact folder location
+ * @returns {Promise<string[]>} List of Absolute file paths
+ * @example
+ * ```ts
+ * await getFilePathFromArtifacts('Utility');
+ * ```
+ */
 export const getFilePathFromArtifacts = async (
   fileName: string,
   artifactLocation?: string
@@ -293,6 +395,19 @@ export const getFilePathFromArtifacts = async (
   return getFilePath(path.resolve(rootFolder(), location), fileName);
 };
 
+/**
+ * Getting File Path from Folder
+ * @param {string} currentDirPath folder location
+ * @param {string} fileName name of file (eg. 'Utility' given Utility.sol)
+ * @returns {Promise<string[]>} List of Absolute file paths
+ * @example
+ * ```ts
+ * await getFilePath(
+ *    path.resolve(rootFolder(), 'artifacts'),
+ *    'Utility'
+ * );
+ * ```
+ */
 export const getFilePath = async (
   currentDirPath: string,
   fileName: string
@@ -310,6 +425,17 @@ export const getFilePath = async (
   return filteredFileList;
 };
 
+/**
+ * Get all files from a given parent directory
+ * @param {string} dir folder location
+ * @returns {Promise<string[]>} List of Absolute file paths
+ * @example
+ * ```ts
+ * await walk(
+ *    path.resolve(rootFolder(), 'artifacts')
+ * );
+ * ```
+ */
 export const walk = async (dir: string): Promise<string[]> => {
   let files = await fs.promises.readdir(dir);
   files = (await Promise.all(
@@ -327,11 +453,29 @@ export const walk = async (dir: string): Promise<string[]> => {
   }) as string[];
 };
 
+/**
+ * Get rootFolder absolute path
+ * @returns {string} rootFolder absolute path
+ * @example
+ * ```ts
+ * rootFolder();
+ * ```
+ */
 export const rootFolder = (): string =>
   __dirname.includes("node_modules")
     ? __dirname.split("node_modules")[0]
     : path.resolve(__dirname, "../");
 
+/**
+ * Throws Error if folder does not exists
+ * @param {string} root root folder (path that has been confirmed to exist)
+ * @param {string} location location to check if exist
+ * @returns {Promise<void>} Promise to check if path exist
+ * @example
+ * ```ts
+ * checkIfNotExist(rootFolder(), 'artifacts');
+ * ```
+ */
 export const checkIfNotExist = async (
   root: string,
   location: string
@@ -350,6 +494,16 @@ export const checkIfNotExist = async (
   }
 };
 
+/**
+ * Creates dir and file if does not exists
+ * @param {string} root root folder (path that has been confirmed to exist)
+ * @param {string} location location to check if exist
+ * @returns {Promise<void>} Promise to create if not exist
+ * @example
+ * ```ts
+ * createIfNotExist(rootFolder(), 'artifacts');
+ * ```
+ */
 export const createIfNotExist = async (
   root: string,
   location: string
