@@ -16,6 +16,7 @@ touch .env
 // File: .env
 GOERLI_RPC_URL='https://goerli.infura.io/v3/api-key-here'
 PRIVATE_KEY_1='key'
+JSON_LOCATION='utils/json/constants.json'
 ```
 
 ### Using the SDK
@@ -23,11 +24,11 @@ PRIVATE_KEY_1='key'
 * Create deploy scripts with hardhat-sdk
 ```
 // File: scripts/deploy.ts
-import sdk from 'hardhat-sdk'
+import sdk from 'hardhat-sdk';
 
 const main = async () => {
   await sdk.setNetwork('goerli');
-  await sdk.createIfNotExist(sdk.rootFolder(), 'utils/json/constants.json');
+  await sdk.createIfNotExist(sdk.rootFolder(), sdk.JSON_LOCATION);
   const addr = await sdk.deployContractFromArtifacts(
     'Lock',
     'lock',
@@ -47,7 +48,7 @@ import sdk from 'hardhat-sdk'
 
 const main = async () => {
   await sdk.setNetwork('goerli');
-  await sdk.createIfNotExist(sdk.rootFolder(), 'utils/json/constants.json');
+  await sdk.createIfNotExist(sdk.rootFolder(), sdk.JSON_LOCATION);
   const lockContract = await sdk.getContractFromArtifacts(
     'Lock',
     'lock'

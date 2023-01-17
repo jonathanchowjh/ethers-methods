@@ -1,17 +1,16 @@
 import fs from "fs";
 import path from "path";
 import { ethers, ContractFactory, Wallet } from "ethers";
-import { PRIVATE_KEY_1, GOERLI_RPC_URL } from "./env";
+import {
+  PRIVATE_KEY_1,
+  GOERLI_RPC_URL,
+  JSON_LOCATION,
+  ADDR_IDENT,
+} from "./env";
 
 // =====================================
 // HARDHAT FUNCTIONS
 // =====================================
-
-declare global {
-  interface Window {
-    ethereum?: any;
-  }
-}
 
 export type ObjAny = { [k: string]: any };
 
@@ -25,23 +24,17 @@ export type ObjAny = { [k: string]: any };
  */
 export const wallet = async (): Promise<ethers.Signer> => {
   const network = await getNetwork();
-  if (network == "localhost" || network == "hardhat") {
+  if (network === "localhost" || network === "hardhat") {
     const provider = new ethers.providers.JsonRpcProvider(
       "http://127.0.0.1:8545/"
     );
-    const wallet = new Wallet(PRIVATE_KEY_1).connect(provider);
-    return wallet;
+    const connectedWallet = new Wallet(PRIVATE_KEY_1).connect(provider);
+    return connectedWallet;
   }
-  if (network == "goerli") {
+  if (network === "goerli") {
     const provider = new ethers.providers.JsonRpcProvider(GOERLI_RPC_URL);
-    const wallet = new Wallet(PRIVATE_KEY_1).connect(provider);
-    return wallet;
-  }
-  if (network == "web3") {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    await provider.send("eth_requestAccounts", []);
-    const signer = provider.getSigner();
-    return signer;
+    const connectedWallet = new Wallet(PRIVATE_KEY_1).connect(provider);
+    return connectedWallet;
   }
   throw new Error("hardhat-sdk::wallet::invalid-network");
 };
@@ -68,7 +61,7 @@ export const deployContractFromArtifacts = async (
     fileName,
     artifactLocation
   );
-  if (fileList.length == 0)
+  if (fileList.length === 0)
     throw new Error(
       "hardhat-sdk::deployContractFromArtifacts::artifact-not-found"
     );
@@ -96,10 +89,10 @@ export const deployContract = async (
   contractAbi: string,
   contractName: string,
   deployArgs: any[],
-  wallet: ethers.Signer
+  signer: ethers.Signer
 ): Promise<string> => {
   const abi = await getJSON(contractAbi);
-  const factory = new ContractFactory(abi.abi, abi.bytecode, wallet);
+  const factory = new ContractFactory(abi.abi, abi.bytecode, signer);
   const contract = await factory.deploy(...deployArgs);
   await saveAddress(contractName, contract.address);
   return getAddress(contractName);
@@ -127,14 +120,14 @@ export const getContractFromArtifacts = async (
     artifactLocation
   );
   const contractAddr = await readJson(
-    "addresses",
+    ADDR_IDENT,
     await addressName(contractName)
   );
-  if (fileList.length == 0)
+  if (fileList.length === 0)
     throw new Error(
       "hardhat-sdk::getContractFromArtifacts::artifact-not-found"
     );
-  if (typeof contractAddr != "string")
+  if (typeof contractAddr !== "string")
     throw new Error(
       "hardhat-sdk::getContractFromArtifacts::contract-address-not-found"
     );
@@ -159,11 +152,11 @@ export const getContractFromArtifacts = async (
 export const getContract = async (
   contractAbi: string,
   contractAddress: string,
-  wallet: ethers.Signer
+  signer: ethers.Signer
 ): Promise<ethers.Contract> => {
   const abi = await getJSON(contractAbi);
   if (!abi.abi) throw new Error("hardhat-sdk::getContract::abi-not-found");
-  return new ethers.Contract(contractAddress, abi.abi, wallet);
+  return new ethers.Contract(contractAddress, abi.abi, signer);
 };
 
 // ===================================
@@ -180,7 +173,7 @@ export const getContract = async (
  */
 export const getNetwork = async (): Promise<string> => {
   const network = await readJson("chain", "network");
-  if (typeof network != "string")
+  if (typeof network !== "string")
     throw new Error("hardhat-sdk::getNetwork::invalid-network");
   return network;
 };
@@ -209,13 +202,13 @@ export const setNetwork = async (networkName: string): Promise<string> => {
  */
 export const getAddresses = async (): Promise<ObjAny> => {
   const object = await readJson();
-  if (!object || typeof object == "string" || !object.addresses) return {};
+  if (!object || typeof object === "string" || !object.addresses) return {};
   return filterObj(object.addresses, await getNetwork());
 };
 
 export const getAddress = async (contractName: string): Promise<string> => {
-  const addr = await readJson("addresses", await addressName(contractName));
-  if (typeof addr != "string")
+  const addr = await readJson(ADDR_IDENT, await addressName(contractName));
+  if (typeof addr !== "string")
     throw new Error("hardhat-sdk::getNetwork::invalid-address");
   return addr;
 };
@@ -224,9 +217,7 @@ export const saveAddress = async (
   name: string,
   value: string,
   file?: string
-): Promise<void> => {
-  return saveJson("addresses", await addressName(name), value, file);
-};
+): Promise<void> => saveJson(ADDR_IDENT, await addressName(name), value, file);
 
 // ===================================
 // READ WRITE JSON
@@ -236,7 +227,7 @@ export const readJson = async (
   name?: string,
   file?: string
 ): Promise<ObjAny | string | undefined> => {
-  const fileName = file || "utils/json/constants.json";
+  const fileName = file || JSON_LOCATION;
   await checkIfNotExist(rootFolder(), fileName);
   const rawdata = await fs.promises.readFile(
     path.resolve(rootFolder(), fileName)
@@ -260,11 +251,11 @@ export const saveJson = async (
   value: string,
   file?: string
 ): Promise<void> => {
-  const fileName = file || "utils/json/constants.json";
+  const fileName = file || JSON_LOCATION;
   await checkIfNotExist(rootFolder(), fileName);
   let object = await readJson(undefined, undefined, file);
   if (object === undefined) object = {};
-  if (typeof object == "string") object = {};
+  if (typeof object === "string") object = {};
   if (object[type] === undefined) object[type] = {};
   object[type][name] = value;
   await fs.promises.writeFile(
@@ -298,7 +289,7 @@ export const getFilePathFromArtifacts = async (
   artifactLocation?: string
 ): Promise<string[]> => {
   const location =
-    artifactLocation == undefined ? "artifacts/" : artifactLocation;
+    artifactLocation === undefined ? "artifacts/" : artifactLocation;
   return getFilePath(path.resolve(rootFolder(), location), fileName);
 };
 
@@ -308,12 +299,12 @@ export const getFilePath = async (
 ): Promise<string[]> => {
   const fileList = await walk(currentDirPath);
   const filteredFileList: string[] = fileList.flat(Infinity).filter((val) => {
-    if (val == undefined) return false;
+    if (val === undefined) return false;
     let fileNameArr = val.split("/");
     fileNameArr = fileNameArr[fileNameArr.length - 1].split(".");
     if (fileNameArr.length < 2) return false;
-    if (fileNameArr[0] != fileName) return false;
-    if (fileNameArr[1] == "dbg") return false;
+    if (fileNameArr[0] !== fileName) return false;
+    if (fileNameArr[1] === "dbg") return false;
     return true;
   }) as string[];
   return filteredFileList;
@@ -326,42 +317,47 @@ export const walk = async (dir: string): Promise<string[]> => {
       const filePath = path.join(dir, file);
       const stats = await fs.promises.stat(filePath);
       if (stats.isDirectory()) return walk(filePath);
-      else if (stats.isFile()) return filePath;
+      if (stats.isFile()) return filePath;
+      throw new Error("hardhat-sdk::walk::invalid-file-type");
     })
   )) as any[];
-  return files.map((val) => {
-    if (val == undefined) return;
-    return val;
+  return files.filter((val) => {
+    if (val === undefined) return false;
+    return true;
   }) as string[];
 };
 
-export const rootFolder = (): string => {
-  return __dirname.includes("node_modules")
+export const rootFolder = (): string =>
+  __dirname.includes("node_modules")
     ? __dirname.split("node_modules")[0]
     : path.resolve(__dirname, "../");
-};
 
-export const checkIfNotExist = async (root: string, location: string): Promise<void> => {
+export const checkIfNotExist = async (
+  root: string,
+  location: string
+): Promise<void> => {
   if (!root.includes(rootFolder()))
     throw new Error("hardhat-sdk::checkIfNotExist::path-not-in-root");
   const loc = location.split("/");
-  const isFile = loc.length == 1;
+  const isFile = loc.length === 1;
   const filePath = path.resolve(root, loc[0]);
   const files = await fs.promises.readdir(path.resolve(root));
   if (!files.includes(loc[0])) {
     throw new Error("hardhat-sdk::checkIfNotExist::invalid-location");
   } else {
-    if (!isFile) {
-      await checkIfNotExist(filePath, loc.slice(1).join("/"));
-    }
+    if (isFile) return;
+    await checkIfNotExist(filePath, loc.slice(1).join("/"));
   }
 };
 
-export const createIfNotExist = async (root: string, location: string): Promise<void> => {
+export const createIfNotExist = async (
+  root: string,
+  location: string
+): Promise<void> => {
   if (!root.includes(rootFolder()))
     throw new Error("hardhat-sdk::createIfNotExist::path-not-in-root");
   const loc = location.split("/");
-  const isFile = loc.length == 1;
+  const isFile = loc.length === 1;
   const filePath = path.resolve(root, loc[0]);
   const files = await fs.promises.readdir(path.resolve(root));
   if (!files.includes(loc[0])) {
@@ -372,8 +368,7 @@ export const createIfNotExist = async (root: string, location: string): Promise<
       await createIfNotExist(filePath, loc.slice(1).join("/"));
     }
   } else {
-    if (!isFile) {
-      await createIfNotExist(filePath, loc.slice(1).join("/"));
-    }
+    if (isFile) return;
+    await createIfNotExist(filePath, loc.slice(1).join("/"));
   }
 };

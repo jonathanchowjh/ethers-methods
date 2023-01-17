@@ -45,7 +45,7 @@
 
 #### Defined in
 
-[main.ts:16](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L16)
+[main.ts:15](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L15)
 
 ## Functions
 
@@ -65,7 +65,7 @@
 
 #### Defined in
 
-[main.ts:282](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L282)
+[main.ts:273](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L273)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-[main.ts:344](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L344)
+[main.ts:335](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L335)
 
 ___
 
@@ -107,13 +107,13 @@ ___
 
 #### Defined in
 
-[main.ts:360](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L360)
+[main.ts:353](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L353)
 
 ___
 
 ### deployContract
 
-▸ **deployContract**(`contractAbi`, `contractName`, `deployArgs`, `wallet`): `Promise`<`string`\>
+▸ **deployContract**(`contractAbi`, `contractName`, `deployArgs`, `signer`): `Promise`<`string`\>
 
 This function deploys contract, with ABI path, deployArgs, and a Signer
 
@@ -135,7 +135,7 @@ await sdk.deployContract(
 | `contractAbi` | `string` | Absolute or Relative (to project root) path of ABI JSON file |
 | `contractName` | `string` | Name of Contract to index deployed addresses |
 | `deployArgs` | `any`[] | Array of arguments to be deconstructed |
-| `wallet` | `Signer` | Signer used to sign transactions |
+| `signer` | `Signer` | - |
 
 #### Returns
 
@@ -145,7 +145,7 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:95](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L95)
+[main.ts:88](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L88)
 
 ___
 
@@ -178,7 +178,7 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:61](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L61)
+[main.ts:54](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L54)
 
 ___
 
@@ -199,7 +199,7 @@ ___
 
 #### Defined in
 
-[main.ts:279](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L279)
+[main.ts:270](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L270)
 
 ___
 
@@ -219,7 +219,7 @@ ___
 
 #### Defined in
 
-[main.ts:216](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L216)
+[main.ts:209](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L209)
 
 ___
 
@@ -243,13 +243,13 @@ list of all saved addresses of deployed contracts
 
 #### Defined in
 
-[main.ts:210](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L210)
+[main.ts:203](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L203)
 
 ___
 
 ### getContract
 
-▸ **getContract**(`contractAbi`, `contractAddress`, `wallet`): `Promise`<`Contract`\>
+▸ **getContract**(`contractAbi`, `contractAddress`, `signer`): `Promise`<`Contract`\>
 
 This function creates a contract interface with a deployed contract.
 
@@ -269,7 +269,7 @@ await sdk.getContract(
 | :------ | :------ | :------ |
 | `contractAbi` | `string` | Absolute or Relative (to project root) path of ABI JSON file |
 | `contractAddress` | `string` | Address of Deployed Contract |
-| `wallet` | `Signer` | Signer used to sign transactions |
+| `signer` | `Signer` | - |
 
 #### Returns
 
@@ -279,7 +279,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:159](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L159)
+[main.ts:152](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L152)
 
 ___
 
@@ -312,7 +312,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:120](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L120)
+[main.ts:113](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L113)
 
 ___
 
@@ -333,7 +333,7 @@ ___
 
 #### Defined in
 
-[main.ts:305](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L305)
+[main.ts:296](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L296)
 
 ___
 
@@ -354,7 +354,7 @@ ___
 
 #### Defined in
 
-[main.ts:296](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L296)
+[main.ts:287](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L287)
 
 ___
 
@@ -374,7 +374,7 @@ ___
 
 #### Defined in
 
-[main.ts:290](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L290)
+[main.ts:281](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L281)
 
 ___
 
@@ -398,7 +398,7 @@ current network (localhost / hardhat / goerli / web3)
 
 #### Defined in
 
-[main.ts:181](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L181)
+[main.ts:174](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L174)
 
 ___
 
@@ -420,7 +420,7 @@ ___
 
 #### Defined in
 
-[main.ts:234](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L234)
+[main.ts:225](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L225)
 
 ___
 
@@ -434,7 +434,7 @@ ___
 
 #### Defined in
 
-[main.ts:338](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L338)
+[main.ts:330](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L330)
 
 ___
 
@@ -456,7 +456,7 @@ ___
 
 #### Defined in
 
-[main.ts:223](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L223)
+[main.ts:216](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L216)
 
 ___
 
@@ -479,7 +479,7 @@ ___
 
 #### Defined in
 
-[main.ts:257](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L257)
+[main.ts:248](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L248)
 
 ___
 
@@ -509,7 +509,7 @@ current network (localhost / hardhat / goerli / web3)
 
 #### Defined in
 
-[main.ts:197](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L197)
+[main.ts:190](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L190)
 
 ___
 
@@ -529,7 +529,7 @@ ___
 
 #### Defined in
 
-[main.ts:285](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L285)
+[main.ts:276](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L276)
 
 ___
 
@@ -549,7 +549,7 @@ ___
 
 #### Defined in
 
-[main.ts:322](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L322)
+[main.ts:313](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L313)
 
 ___
 
@@ -573,4 +573,4 @@ Signer used to sign transactions
 
 #### Defined in
 
-[main.ts:26](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L26)
+[main.ts:25](https://github.com/jonathanchowjh/nft-contracts/blob/1686d73/utils/main.ts#L25)

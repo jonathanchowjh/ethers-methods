@@ -16,6 +16,7 @@ import {
 
 async function main() {
   await deployContractFromArtifacts("Utility", "utility", []);
+  // eslint-disable-next-line
   console.log(await readJson("addresses", await addressName("utility")));
   await wait(10000);
 
@@ -27,16 +28,18 @@ async function main() {
   ]
   const utilityContract = await getContractFromArtifacts('Utility', 'utility');
   const balances = await utilityContract.getBalances(PUBLIC_KEY_1, TOKENS);
-  let ret = [...TOKENS];
+  const ret = [...TOKENS];
   return ret.map((val, idx) => ({
     token: val,
     balance: balances[idx].toNumber()
   }));
 }
 
+/* eslint-disable no-console */
 main()
   .then(val => console.log(val))
   .catch((error) => {
     console.error(error);
     process.exitCode = 1;
   });
+/* eslint-enable no-console */
