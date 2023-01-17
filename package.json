@@ -1,6 +1,6 @@
 {
-  "name": "hardhat-sdk",
-  "version": "1.0.15",
+  "name": "ethers-sdk",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "files": [
     "dist"

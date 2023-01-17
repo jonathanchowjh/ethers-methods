@@ -1,19 +1,23 @@
-hardhat-sdk / [Exports](modules.md)
+ethers-sdk / [Exports](modules.md)
 
 # hardhat-sdk
 
 ### Pre-Install Hardhat Repo
+
 ```
 mkdir appName && cd appName
 npx hardhat   // options: typescript-project, hardhat-toolbox
 ```
 
 ### Install
+
 ```
 npm i -D hardhat-sdk
 touch .env
 ```
-* Add the following into the ```.env``` file
+
+- Add the following into the `.env` file
+
 ```
 // File: .env
 GOERLI_RPC_URL='https://goerli.infura.io/v3/api-key-here'
@@ -22,8 +26,10 @@ JSON_LOCATION='utils/json/constants.json'
 ```
 
 ### Using the SDK
-* RUN ```npx hardhat compile```
-* Create deploy scripts with hardhat-sdk
+
+- RUN `npx hardhat compile`
+- Create deploy scripts with hardhat-sdk
+
 ```
 // File: scripts/deploy.ts
 import sdk from 'hardhat-sdk';
@@ -43,7 +49,9 @@ main()
   .then(val => console.log(val))
   .catch(err => console.error(err));
 ```
-* Create contract scripts with hardhat-sdk
+
+- Create contract scripts with hardhat-sdk
+
 ```
 // File: scripts/runTest.ts
 import sdk from 'hardhat-sdk'
@@ -63,13 +71,16 @@ main()
   .then(val => console.log(val))
   .catch(err => console.error(err));
 ```
-* Run scripts in order
+
+- Run scripts in order
+
 ```
 npx ts-node scripts/deploy.ts
 npx ts-node scripts/runTest.ts
 ```
 
 ## SDK Documentation
+
 [FULL DOCUMENTATION](docs/modules.md)
 
 ### deployContract
@@ -82,21 +93,21 @@ This function deploys contract, with ABI path, deployArgs, and a Signer
 
 ```ts
 await sdk.deployContract(
-   "artifacts/contracts/Utility.sol/Utility.json",
-   "utility",
-   [],
-   await sdk.wallet()
+  "artifacts/contracts/Utility.sol/Utility.json",
+  "utility",
+  [],
+  await sdk.wallet()
 );
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `contractAbi` | `string` | Absolute or Relative (to project root) path of ABI JSON file |
-| `contractName` | `string` | Name of Contract to index deployed addresses |
-| `deployArgs` | `any`[] | Array of arguments to be deconstructed |
-| `signer` | `Signer` | Signer used to sign transactions |
+| Name           | Type     | Description                                                  |
+| :------------- | :------- | :----------------------------------------------------------- |
+| `contractAbi`  | `string` | Absolute or Relative (to project root) path of ABI JSON file |
+| `contractName` | `string` | Name of Contract to index deployed addresses                 |
+| `deployArgs`   | `any`[]  | Array of arguments to be deconstructed                       |
+| `signer`       | `Signer` | Signer used to sign transactions                             |
 
 #### Returns
 
@@ -104,7 +115,7 @@ await sdk.deployContract(
 
 Address of Deployed Contract
 
-___
+---
 
 ### deployContractFromArtifacts
 
@@ -120,12 +131,12 @@ await sdk.deployContractFromArtifacts("Utility", "utility", []);
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `fileName` | `string` | Name of Contract file to find ABI |
-| `contractName` | `string` | Name of Contract to index deployed addresses |
-| `deployArgs` | `any`[] | Array of arguments to be deconstructed |
-| `artifactLocation?` | `string` | (Optional) File location of ABIs |
+| Name                | Type     | Description                                  |
+| :------------------ | :------- | :------------------------------------------- |
+| `fileName`          | `string` | Name of Contract file to find ABI            |
+| `contractName`      | `string` | Name of Contract to index deployed addresses |
+| `deployArgs`        | `any`[]  | Array of arguments to be deconstructed       |
+| `artifactLocation?` | `string` | (Optional) File location of ABIs             |
 
 #### Returns
 
@@ -133,7 +144,7 @@ await sdk.deployContractFromArtifacts("Utility", "utility", []);
 
 Address of Deployed Contract
 
-___
+---
 
 ### getContract
 
@@ -145,19 +156,19 @@ This function creates a contract interface with a deployed contract.
 
 ```ts
 await sdk.getContract(
-   "artifacts/contracts/Utility.sol/Utility.json",
-   "0x65B165C17a8660e84e4427c4024fcB784577AB05",
-   await sdk.wallet()
+  "artifacts/contracts/Utility.sol/Utility.json",
+  "0x65B165C17a8660e84e4427c4024fcB784577AB05",
+  await sdk.wallet()
 );
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `contractAbi` | `string` | Absolute or Relative (to project root) path of ABI JSON file |
-| `contractAddress` | `string` | Address of Deployed Contract |
-| `signer` | `Signer` | Signer used to sign transactions |
+| Name              | Type     | Description                                                  |
+| :---------------- | :------- | :----------------------------------------------------------- |
+| `contractAbi`     | `string` | Absolute or Relative (to project root) path of ABI JSON file |
+| `contractAddress` | `string` | Address of Deployed Contract                                 |
+| `signer`          | `Signer` | Signer used to sign transactions                             |
 
 #### Returns
 
@@ -165,7 +176,7 @@ await sdk.getContract(
 
 Deployed Contract ethers Interface
 
-___
+---
 
 ### getContractFromArtifacts
 
@@ -182,11 +193,11 @@ await sdk.getContractFromArtifacts("Utility", "utility");
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `fileName` | `string` | Name of Contract file to find ABI |
-| `contractName` | `string` | Name of Contract to index deployed addresses |
-| `artifactLocation?` | `string` | (Optional) File location of ABIs |
+| Name                | Type     | Description                                  |
+| :------------------ | :------- | :------------------------------------------- |
+| `fileName`          | `string` | Name of Contract file to find ABI            |
+| `contractName`      | `string` | Name of Contract to index deployed addresses |
+| `artifactLocation?` | `string` | (Optional) File location of ABIs             |
 
 #### Returns
 
@@ -194,7 +205,7 @@ await sdk.getContractFromArtifacts("Utility", "utility");
 
 Deployed Contract ethers Interface
 
-___
+---
 
 ### readJson
 
@@ -205,16 +216,16 @@ This reads json file given type and name
 **`Example`**
 
 ```ts
-await readJson('addresses', 'goerli-utility');
+await readJson("addresses", "goerli-utility");
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `type?` | `string` | (Optional) Type of saved data (eg. addresses) |
+| Name    | Type     | Description                                        |
+| :------ | :------- | :------------------------------------------------- |
+| `type?` | `string` | (Optional) Type of saved data (eg. addresses)      |
 | `name?` | `string` | (Optional) Name of saved data (eg. goerli-utility) |
-| `file?` | `string` | (Optional) File that data is saved in |
+| `file?` | `string` | (Optional) File that data is saved in              |
 
 #### Returns
 
@@ -222,7 +233,7 @@ await readJson('addresses', 'goerli-utility');
 
 Object or string, depending on input
 
-___
+---
 
 ### rootFolder
 
@@ -242,7 +253,7 @@ rootFolder();
 
 rootFolder absolute path
 
-___
+---
 
 ### saveAddress
 
@@ -253,16 +264,16 @@ This function saves the address given a contract name
 **`Example`**
 
 ```ts
-await saveAddress('utility', '0x4d391169EcF040072d8Da35d70166f70254B32C7');
+await saveAddress("utility", "0x4d391169EcF040072d8Da35d70166f70254B32C7");
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `name` | `string` | Name of Contract to index deployed addresses |
-| `value` | `string` | Value of address to save |
-| `file?` | `string` | (Optional) File to save address in |
+| Name    | Type     | Description                                  |
+| :------ | :------- | :------------------------------------------- |
+| `name`  | `string` | Name of Contract to index deployed addresses |
+| `value` | `string` | Value of address to save                     |
+| `file?` | `string` | (Optional) File to save address in           |
 
 #### Returns
 
@@ -270,7 +281,7 @@ await saveAddress('utility', '0x4d391169EcF040072d8Da35d70166f70254B32C7');
 
 Promise to save address of given contract
 
-___
+---
 
 ### saveJson
 
@@ -282,20 +293,20 @@ This saves to json file given type, name, and value
 
 ```ts
 await saveJson(
-   'addresses',
-   'goerli-utility',
-   '0x65B165C17a8660e84e4427c4024fcB784577AB05'
+  "addresses",
+  "goerli-utility",
+  "0x65B165C17a8660e84e4427c4024fcB784577AB05"
 );
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `type` | `string` | Type of saved data (eg. addresses) |
-| `name` | `string` | Name of saved data (eg. goerli-utility) |
+| Name    | Type     | Description                                                          |
+| :------ | :------- | :------------------------------------------------------------------- |
+| `type`  | `string` | Type of saved data (eg. addresses)                                   |
+| `name`  | `string` | Name of saved data (eg. goerli-utility)                              |
 | `value` | `string` | Value of saved data (eg. 0x65B165C17a8660e84e4427c4024fcB784577AB05) |
-| `file?` | `string` | (Optional) File that data is saved in |
+| `file?` | `string` | (Optional) File that data is saved in                                |
 
 #### Returns
 
@@ -303,7 +314,7 @@ await saveJson(
 
 Promise to finish writing to file
 
-___
+---
 
 ### setNetwork
 
@@ -319,8 +330,8 @@ await setNetwork("goerli");
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name          | Type     | Description                       |
+| :------------ | :------- | :-------------------------------- |
 | `networkName` | `string` | name of NETWORK name to change to |
 
 #### Returns
@@ -329,7 +340,7 @@ await setNetwork("goerli");
 
 current network (localhost / hardhat / goerli / web3)
 
-___
+---
 
 ### wallet
 
