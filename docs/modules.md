@@ -45,7 +45,7 @@
 
 #### Defined in
 
-[main.ts:15](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L15)
+[main.ts:15](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L15)
 
 ## Functions
 
@@ -58,13 +58,13 @@ Concat network name with contract name
 **`Example`**
 
 ```ts
-await addressName('utility');
+await addressName("utility");
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name   | Type     | Description                                  |
+| :----- | :------- | :------------------------------------------- |
 | `name` | `string` | Name of Contract to index deployed addresses |
 
 #### Returns
@@ -75,9 +75,9 @@ concatenated network name with contract name
 
 #### Defined in
 
-[main.ts:347](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L347)
+[main.ts:347](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L347)
 
-___
+---
 
 ### checkIfNotExist
 
@@ -88,15 +88,15 @@ Throws Error if folder does not exists
 **`Example`**
 
 ```ts
-checkIfNotExist(rootFolder(), 'artifacts/json/constants.json');
+checkIfNotExist(rootFolder(), "artifacts/json/constants.json");
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `root` | `string` | root folder (path that has been confirmed to exist) |
-| `location` | `string` | location to check if exist |
+| Name       | Type     | Description                                         |
+| :--------- | :------- | :-------------------------------------------------- |
+| `root`     | `string` | root folder (path that has been confirmed to exist) |
+| `location` | `string` | location to check if exist                          |
 
 #### Returns
 
@@ -106,9 +106,9 @@ Promise to check if path exist
 
 #### Defined in
 
-[main.ts:479](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L479)
+[main.ts:479](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L479)
 
-___
+---
 
 ### createIfNotExist
 
@@ -119,15 +119,15 @@ Creates dir and file if does not exists
 **`Example`**
 
 ```ts
-createIfNotExist(rootFolder(), 'artifacts/json/constants.json');
+createIfNotExist(rootFolder(), "artifacts/json/constants.json");
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `root` | `string` | root folder (path that has been confirmed to exist) |
-| `location` | `string` | location to check if exist |
+| Name       | Type     | Description                                         |
+| :--------- | :------- | :-------------------------------------------------- |
+| `root`     | `string` | root folder (path that has been confirmed to exist) |
+| `location` | `string` | location to check if exist                          |
 
 #### Returns
 
@@ -137,9 +137,9 @@ Promise to create if not exist
 
 #### Defined in
 
-[main.ts:507](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L507)
+[main.ts:507](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L507)
 
-___
+---
 
 ### deployContract
 
@@ -151,21 +151,21 @@ This function deploys contract, with ABI path, deployArgs, and a Signer
 
 ```ts
 await sdk.deployContract(
-   "artifacts/contracts/Utility.sol/Utility.json",
-   "utility",
-   [],
-   await sdk.wallet()
+  "artifacts/contracts/Utility.sol/Utility.json",
+  "utility",
+  [],
+  await sdk.wallet()
 );
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `contractAbi` | `string` | Absolute or Relative (to project root) path of ABI JSON file |
-| `contractName` | `string` | Name of Contract to index deployed addresses |
-| `deployArgs` | `any`[] | Array of arguments to be deconstructed |
-| `signer` | `Signer` | Signer used to sign transactions |
+| Name           | Type     | Description                                                  |
+| :------------- | :------- | :----------------------------------------------------------- |
+| `contractAbi`  | `string` | Absolute or Relative (to project root) path of ABI JSON file |
+| `contractName` | `string` | Name of Contract to index deployed addresses                 |
+| `deployArgs`   | `any`[]  | Array of arguments to be deconstructed                       |
+| `signer`       | `Signer` | Signer used to sign transactions                             |
 
 #### Returns
 
@@ -175,9 +175,9 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:88](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L88)
+[main.ts:88](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L88)
 
-___
+---
 
 ### deployContractFromArtifacts
 
@@ -193,12 +193,12 @@ await sdk.deployContractFromArtifacts("Utility", "utility", []);
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `fileName` | `string` | Name of Contract file to find ABI |
-| `contractName` | `string` | Name of Contract to index deployed addresses |
-| `deployArgs` | `any`[] | Array of arguments to be deconstructed |
-| `artifactLocation?` | `string` | (Optional) File location of ABIs |
+| Name                | Type     | Description                                  |
+| :------------------ | :------- | :------------------------------------------- |
+| `fileName`          | `string` | Name of Contract file to find ABI            |
+| `contractName`      | `string` | Name of Contract to index deployed addresses |
+| `deployArgs`        | `any`[]  | Array of arguments to be deconstructed       |
+| `artifactLocation?` | `string` | (Optional) File location of ABIs             |
 
 #### Returns
 
@@ -208,9 +208,9 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:54](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L54)
+[main.ts:54](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L54)
 
-___
+---
 
 ### filterObj
 
@@ -232,10 +232,10 @@ filterObj(
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name  | Type     | Description              |
+| :---- | :------- | :----------------------- |
 | `obj` | `Object` | Object to filter through |
-| `str` | `string` | Value to filter by |
+| `str` | `string` | Value to filter by       |
 
 #### Returns
 
@@ -245,9 +245,9 @@ Filtered Object
 
 #### Defined in
 
-[main.ts:335](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L335)
+[main.ts:335](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L335)
 
-___
+---
 
 ### getAddress
 
@@ -258,13 +258,13 @@ This function returns the saved address of given contract
 **`Example`**
 
 ```ts
-await getAddress('utility');
+await getAddress("utility");
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name           | Type     | Description                                        |
+| :------------- | :------- | :------------------------------------------------- |
 | `contractName` | `string` | Name of Contract to get indexed deployed addresses |
 
 #### Returns
@@ -275,9 +275,9 @@ Saved address of given contract
 
 #### Defined in
 
-[main.ts:218](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L218)
+[main.ts:218](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L218)
 
-___
+---
 
 ### getAddresses
 
@@ -299,9 +299,9 @@ list of all saved addresses of deployed contracts
 
 #### Defined in
 
-[main.ts:203](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L203)
+[main.ts:203](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L203)
 
-___
+---
 
 ### getContract
 
@@ -313,19 +313,19 @@ This function creates a contract interface with a deployed contract.
 
 ```ts
 await sdk.getContract(
-   "artifacts/contracts/Utility.sol/Utility.json",
-   "0x65B165C17a8660e84e4427c4024fcB784577AB05",
-   await sdk.wallet()
+  "artifacts/contracts/Utility.sol/Utility.json",
+  "0x65B165C17a8660e84e4427c4024fcB784577AB05",
+  await sdk.wallet()
 );
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `contractAbi` | `string` | Absolute or Relative (to project root) path of ABI JSON file |
-| `contractAddress` | `string` | Address of Deployed Contract |
-| `signer` | `Signer` | Signer used to sign transactions |
+| Name              | Type     | Description                                                  |
+| :---------------- | :------- | :----------------------------------------------------------- |
+| `contractAbi`     | `string` | Absolute or Relative (to project root) path of ABI JSON file |
+| `contractAddress` | `string` | Address of Deployed Contract                                 |
+| `signer`          | `Signer` | Signer used to sign transactions                             |
 
 #### Returns
 
@@ -335,9 +335,9 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:152](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L152)
+[main.ts:152](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L152)
 
-___
+---
 
 ### getContractFromArtifacts
 
@@ -354,11 +354,11 @@ await sdk.getContractFromArtifacts("Utility", "utility");
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `fileName` | `string` | Name of Contract file to find ABI |
-| `contractName` | `string` | Name of Contract to index deployed addresses |
-| `artifactLocation?` | `string` | (Optional) File location of ABIs |
+| Name                | Type     | Description                                  |
+| :------------------ | :------- | :------------------------------------------- |
+| `fileName`          | `string` | Name of Contract file to find ABI            |
+| `contractName`      | `string` | Name of Contract to index deployed addresses |
+| `artifactLocation?` | `string` | (Optional) File location of ABIs             |
 
 #### Returns
 
@@ -368,9 +368,9 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:113](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L113)
+[main.ts:113](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L113)
 
-___
+---
 
 ### getFilePath
 
@@ -381,18 +381,15 @@ Getting File Path from Folder
 **`Example`**
 
 ```ts
-await getFilePath(
-   path.resolve(rootFolder(), 'artifacts'),
-   'Utility'
-);
+await getFilePath(path.resolve(rootFolder(), "artifacts"), "Utility");
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `currentDirPath` | `string` | folder location |
-| `fileName` | `string` | name of file (eg. 'Utility' given Utility.sol) |
+| Name             | Type     | Description                                    |
+| :--------------- | :------- | :--------------------------------------------- |
+| `currentDirPath` | `string` | folder location                                |
+| `fileName`       | `string` | name of file (eg. 'Utility' given Utility.sol) |
 
 #### Returns
 
@@ -402,9 +399,9 @@ List of Absolute file paths
 
 #### Defined in
 
-[main.ts:411](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L411)
+[main.ts:411](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L411)
 
-___
+---
 
 ### getFilePathFromArtifacts
 
@@ -415,15 +412,15 @@ Getting File Path from Artifacts
 **`Example`**
 
 ```ts
-await getFilePathFromArtifacts('Utility');
+await getFilePathFromArtifacts("Utility");
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `fileName` | `string` | name of file (eg. 'Utility' given Utility.sol) |
-| `artifactLocation?` | `string` | (Optional) artifact folder location |
+| Name                | Type     | Description                                    |
+| :------------------ | :------- | :--------------------------------------------- |
+| `fileName`          | `string` | name of file (eg. 'Utility' given Utility.sol) |
+| `artifactLocation?` | `string` | (Optional) artifact folder location            |
 
 #### Returns
 
@@ -433,9 +430,9 @@ List of Absolute file paths
 
 #### Defined in
 
-[main.ts:389](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L389)
+[main.ts:389](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L389)
 
-___
+---
 
 ### getJSON
 
@@ -446,13 +443,13 @@ Parsed JSON given file (absolute path / relative path to root)
 **`Example`**
 
 ```ts
-await getJSON('utils/json/constants.json');
+await getJSON("utils/json/constants.json");
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name   | Type     | Description       |
+| :----- | :------- | :---------------- |
 | `file` | `string` | file path to read |
 
 #### Returns
@@ -463,9 +460,9 @@ JSON Object
 
 #### Defined in
 
-[main.ts:373](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L373)
+[main.ts:373](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L373)
 
-___
+---
 
 ### getNetwork
 
@@ -487,9 +484,9 @@ current network (localhost / hardhat / goerli / web3)
 
 #### Defined in
 
-[main.ts:174](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L174)
+[main.ts:174](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L174)
 
-___
+---
 
 ### readJson
 
@@ -500,16 +497,16 @@ This reads json file given type and name
 **`Example`**
 
 ```ts
-await readJson('addresses', 'goerli-utility');
+await readJson("addresses", "goerli-utility");
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `type?` | `string` | (Optional) Type of saved data (eg. addresses) |
+| Name    | Type     | Description                                        |
+| :------ | :------- | :------------------------------------------------- |
+| `type?` | `string` | (Optional) Type of saved data (eg. addresses)      |
 | `name?` | `string` | (Optional) Name of saved data (eg. goerli-utility) |
-| `file?` | `string` | (Optional) File that data is saved in |
+| `file?` | `string` | (Optional) File that data is saved in              |
 
 #### Returns
 
@@ -519,9 +516,9 @@ Object or string, depending on input
 
 #### Defined in
 
-[main.ts:257](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L257)
+[main.ts:257](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L257)
 
-___
+---
 
 ### rootFolder
 
@@ -543,9 +540,9 @@ rootFolder absolute path
 
 #### Defined in
 
-[main.ts:464](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L464)
+[main.ts:464](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L464)
 
-___
+---
 
 ### saveAddress
 
@@ -556,16 +553,16 @@ This function saves the address given a contract name
 **`Example`**
 
 ```ts
-await saveAddress('utility', '0x4d391169EcF040072d8Da35d70166f70254B32C7');
+await saveAddress("utility", "0x4d391169EcF040072d8Da35d70166f70254B32C7");
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `name` | `string` | Name of Contract to index deployed addresses |
-| `value` | `string` | Value of address to save |
-| `file?` | `string` | (Optional) File to save address in |
+| Name    | Type     | Description                                  |
+| :------ | :------- | :------------------------------------------- |
+| `name`  | `string` | Name of Contract to index deployed addresses |
+| `value` | `string` | Value of address to save                     |
+| `file?` | `string` | (Optional) File to save address in           |
 
 #### Returns
 
@@ -575,9 +572,9 @@ Promise to save address of given contract
 
 #### Defined in
 
-[main.ts:236](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L236)
+[main.ts:236](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L236)
 
-___
+---
 
 ### saveJson
 
@@ -589,20 +586,20 @@ This saves to json file given type, name, and value
 
 ```ts
 await saveJson(
-   'addresses',
-   'goerli-utility',
-   '0x65B165C17a8660e84e4427c4024fcB784577AB05'
+  "addresses",
+  "goerli-utility",
+  "0x65B165C17a8660e84e4427c4024fcB784577AB05"
 );
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `type` | `string` | Type of saved data (eg. addresses) |
-| `name` | `string` | Name of saved data (eg. goerli-utility) |
+| Name    | Type     | Description                                                          |
+| :------ | :------- | :------------------------------------------------------------------- |
+| `type`  | `string` | Type of saved data (eg. addresses)                                   |
+| `name`  | `string` | Name of saved data (eg. goerli-utility)                              |
 | `value` | `string` | Value of saved data (eg. 0x65B165C17a8660e84e4427c4024fcB784577AB05) |
-| `file?` | `string` | (Optional) File that data is saved in |
+| `file?` | `string` | (Optional) File that data is saved in                                |
 
 #### Returns
 
@@ -612,9 +609,9 @@ Promise to finish writing to file
 
 #### Defined in
 
-[main.ts:296](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L296)
+[main.ts:296](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L296)
 
-___
+---
 
 ### setNetwork
 
@@ -630,8 +627,8 @@ await setNetwork("goerli");
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name          | Type     | Description                       |
+| :------------ | :------- | :-------------------------------- |
 | `networkName` | `string` | name of NETWORK name to change to |
 
 #### Returns
@@ -642,9 +639,9 @@ current network (localhost / hardhat / goerli / web3)
 
 #### Defined in
 
-[main.ts:190](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L190)
+[main.ts:190](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L190)
 
-___
+---
 
 ### wait
 
@@ -660,8 +657,8 @@ await wait(1000);
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name | Type     | Description              |
+| :--- | :------- | :----------------------- |
 | `ms` | `number` | milliseconds to wait for |
 
 #### Returns
@@ -672,9 +669,9 @@ Promise that waits for given number of milliseconds
 
 #### Defined in
 
-[main.ts:359](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L359)
+[main.ts:359](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L359)
 
-___
+---
 
 ### walk
 
@@ -685,15 +682,13 @@ Get all files from a given parent directory
 **`Example`**
 
 ```ts
-await walk(
-   path.resolve(rootFolder(), 'artifacts')
-);
+await walk(path.resolve(rootFolder(), "artifacts"));
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name  | Type     | Description     |
+| :---- | :------- | :-------------- |
 | `dir` | `string` | folder location |
 
 #### Returns
@@ -704,9 +699,9 @@ List of Absolute file paths
 
 #### Defined in
 
-[main.ts:439](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L439)
+[main.ts:439](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L439)
 
-___
+---
 
 ### wallet
 
@@ -728,4 +723,4 @@ Signer used to sign transactions
 
 #### Defined in
 
-[main.ts:25](https://github.com/jonathanchowjh/nft-contracts/blob/0ee9fbb/utils/main.ts#L25)
+[main.ts:25](https://github.com/jonathanchowjh/nft-contracts/blob/2b853ef/utils/main.ts#L25)
