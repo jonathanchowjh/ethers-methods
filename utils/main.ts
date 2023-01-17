@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-export type KeyStringAny = { [k: string]: any };
+export type ObjAny = { [k: string]: any };
 
 /**
  * This function returns a Signer connected to a provider, given the appropriate network
@@ -191,7 +191,7 @@ export const getNetwork = async (): Promise<string> => {
  * @returns {Promise<string>} current network (localhost / hardhat / goerli / web3)
  * @example
  * ```ts
- * await setNetwork('goerli');
+ * await setNetwork("goerli");
  * ```
  */
 export const setNetwork = async (networkName: string): Promise<string> => {
@@ -201,13 +201,13 @@ export const setNetwork = async (networkName: string): Promise<string> => {
 
 /**
  * This function returns list of all saved addresses of deployed contracts
- * @returns {Promise<KeyStringAny>} list of all saved addresses of deployed contracts
+ * @returns {Promise<ObjAny>} list of all saved addresses of deployed contracts
  * @example
  * ```ts
  * await getAddresses();
  * ```
  */
-export const getAddresses = async (): Promise<KeyStringAny> => {
+export const getAddresses = async (): Promise<ObjAny> => {
   const object = await readJson();
   if (!object || typeof object == "string" || !object.addresses) return {};
   return filterObj(object.addresses, await getNetwork());
@@ -235,8 +235,9 @@ export const readJson = async (
   type?: string,
   name?: string,
   file?: string
-): Promise<KeyStringAny | string | undefined> => {
+): Promise<ObjAny | string | undefined> => {
   const fileName = file || "utils/json/constants.json";
+  await checkIfNotExist(rootFolder(), fileName);
   const rawdata = await fs.promises.readFile(
     path.resolve(rootFolder(), fileName)
   );
@@ -259,12 +260,13 @@ export const saveJson = async (
   value: string,
   file?: string
 ): Promise<void> => {
+  const fileName = file || "utils/json/constants.json";
+  await checkIfNotExist(rootFolder(), fileName);
   let object = await readJson(undefined, undefined, file);
   if (object === undefined) object = {};
   if (typeof object == "string") object = {};
   if (object[type] === undefined) object[type] = {};
   object[type][name] = value;
-  const fileName = file || "utils/json/constants.json";
   await fs.promises.writeFile(
     path.resolve(rootFolder(), fileName),
     JSON.stringify(object)
@@ -274,7 +276,7 @@ export const saveJson = async (
 // ===================================
 // MISC HELPER FUNCTIONS
 // ===================================
-export const filterObj = (obj: Object, str: string): KeyStringAny =>
+export const filterObj = (obj: Object, str: string): ObjAny =>
   Object.fromEntries(Object.entries(obj).filter(([key]) => key.includes(str)));
 
 export const addressName = async (name: string): Promise<string> =>
@@ -285,7 +287,7 @@ export const wait = (ms: number): Promise<void> =>
     setTimeout(resolve, ms);
   });
 
-export const getJSON = async (file: string): Promise<KeyStringAny> => {
+export const getJSON = async (file: string): Promise<ObjAny> => {
   const rawdata = await fs.promises.readFile(path.resolve(rootFolder(), file));
   const data = JSON.parse(rawdata.toString());
   return data;
@@ -337,4 +339,41 @@ export const rootFolder = (): string => {
   return __dirname.includes("node_modules")
     ? __dirname.split("node_modules")[0]
     : path.resolve(__dirname, "../");
+};
+
+export const checkIfNotExist = async (root: string, location: string): Promise<void> => {
+  if (!root.includes(rootFolder()))
+    throw new Error("hardhat-sdk::checkIfNotExist::path-not-in-root");
+  const loc = location.split("/");
+  const isFile = loc.length == 1;
+  const filePath = path.resolve(root, loc[0]);
+  const files = await fs.promises.readdir(path.resolve(root));
+  if (!files.includes(loc[0])) {
+    throw new Error("hardhat-sdk::checkIfNotExist::invalid-location");
+  } else {
+    if (!isFile) {
+      await checkIfNotExist(filePath, loc.slice(1).join("/"));
+    }
+  }
+};
+
+export const createIfNotExist = async (root: string, location: string): Promise<void> => {
+  if (!root.includes(rootFolder()))
+    throw new Error("hardhat-sdk::createIfNotExist::path-not-in-root");
+  const loc = location.split("/");
+  const isFile = loc.length == 1;
+  const filePath = path.resolve(root, loc[0]);
+  const files = await fs.promises.readdir(path.resolve(root));
+  if (!files.includes(loc[0])) {
+    if (isFile) {
+      await fs.promises.open(filePath, "w");
+    } else {
+      await fs.promises.mkdir(filePath);
+      await createIfNotExist(filePath, loc.slice(1).join("/"));
+    }
+  } else {
+    if (!isFile) {
+      await createIfNotExist(filePath, loc.slice(1).join("/"));
+    }
+  }
 };

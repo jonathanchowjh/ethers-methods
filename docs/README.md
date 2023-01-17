@@ -11,7 +11,6 @@ npx hardhat   // options: typescript-project, hardhat-toolbox
 ### Install
 ```
 npm i -D hardhat-sdk
-mkdir utils && mkdir utils/json && touch utils/json/constants.json
 touch .env
 ```
 * Add the following into the ```.env``` file
@@ -29,7 +28,8 @@ PRIVATE_KEY_1='key'
 import sdk from 'hardhat-sdk'
 
 const main = async () => {
-  await sdk.setNetwork('goerli')
+  await sdk.setNetwork('goerli');
+  await sdk.createIfNotExist(sdk.rootFolder(), 'utils/json/constants.json');
   const addr = await sdk.deployContractFromArtifacts(
     'Lock',
     'lock',
@@ -49,6 +49,7 @@ import sdk from 'hardhat-sdk'
 
 const main = async () => {
   await sdk.setNetwork('goerli');
+  await sdk.createIfNotExist(sdk.rootFolder(), 'utils/json/constants.json');
   const lockContract = await sdk.getContractFromArtifacts(
     'Lock',
     'lock'

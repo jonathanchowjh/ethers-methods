@@ -6,11 +6,13 @@
 
 ### Type Aliases
 
-- [KeyStringAny](modules.md#keystringany)
+- [ObjAny](modules.md#objany)
 
 ### Functions
 
 - [addressName](modules.md#addressname)
+- [checkIfNotExist](modules.md#checkifnotexist)
+- [createIfNotExist](modules.md#createifnotexist)
 - [deployContract](modules.md#deploycontract)
 - [deployContractFromArtifacts](modules.md#deploycontractfromartifacts)
 - [filterObj](modules.md#filterobj)
@@ -33,9 +35,9 @@
 
 ## Type Aliases
 
-### KeyStringAny
+### ObjAny
 
-Ƭ **KeyStringAny**: `Object`
+Ƭ **ObjAny**: `Object`
 
 #### Index signature
 
@@ -43,7 +45,7 @@
 
 #### Defined in
 
-[main.ts:16](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L16)
+[main.ts:16](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L16)
 
 ## Functions
 
@@ -63,7 +65,49 @@
 
 #### Defined in
 
-[main.ts:280](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L280)
+[main.ts:282](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L282)
+
+___
+
+### checkIfNotExist
+
+▸ **checkIfNotExist**(`root`, `location`): `Promise`<`void`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `root` | `string` |
+| `location` | `string` |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Defined in
+
+[main.ts:344](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L344)
+
+___
+
+### createIfNotExist
+
+▸ **createIfNotExist**(`root`, `location`): `Promise`<`void`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `root` | `string` |
+| `location` | `string` |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Defined in
+
+[main.ts:360](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L360)
 
 ___
 
@@ -101,7 +145,7 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:95](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L95)
+[main.ts:95](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L95)
 
 ___
 
@@ -134,13 +178,13 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:61](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L61)
+[main.ts:61](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L61)
 
 ___
 
 ### filterObj
 
-▸ **filterObj**(`obj`, `str`): [`KeyStringAny`](modules.md#keystringany)
+▸ **filterObj**(`obj`, `str`): [`ObjAny`](modules.md#objany)
 
 #### Parameters
 
@@ -151,11 +195,11 @@ ___
 
 #### Returns
 
-[`KeyStringAny`](modules.md#keystringany)
+[`ObjAny`](modules.md#objany)
 
 #### Defined in
 
-[main.ts:277](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L277)
+[main.ts:279](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L279)
 
 ___
 
@@ -175,13 +219,13 @@ ___
 
 #### Defined in
 
-[main.ts:216](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L216)
+[main.ts:216](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L216)
 
 ___
 
 ### getAddresses
 
-▸ **getAddresses**(): `Promise`<[`KeyStringAny`](modules.md#keystringany)\>
+▸ **getAddresses**(): `Promise`<[`ObjAny`](modules.md#objany)\>
 
 This function returns list of all saved addresses of deployed contracts
 
@@ -193,13 +237,13 @@ await getAddresses();
 
 #### Returns
 
-`Promise`<[`KeyStringAny`](modules.md#keystringany)\>
+`Promise`<[`ObjAny`](modules.md#objany)\>
 
 list of all saved addresses of deployed contracts
 
 #### Defined in
 
-[main.ts:210](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L210)
+[main.ts:210](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L210)
 
 ___
 
@@ -235,7 +279,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:159](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L159)
+[main.ts:159](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L159)
 
 ___
 
@@ -268,7 +312,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:120](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L120)
+[main.ts:120](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L120)
 
 ___
 
@@ -289,7 +333,7 @@ ___
 
 #### Defined in
 
-[main.ts:303](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L303)
+[main.ts:305](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L305)
 
 ___
 
@@ -310,13 +354,13 @@ ___
 
 #### Defined in
 
-[main.ts:294](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L294)
+[main.ts:296](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L296)
 
 ___
 
 ### getJSON
 
-▸ **getJSON**(`file`): `Promise`<[`KeyStringAny`](modules.md#keystringany)\>
+▸ **getJSON**(`file`): `Promise`<[`ObjAny`](modules.md#objany)\>
 
 #### Parameters
 
@@ -326,11 +370,11 @@ ___
 
 #### Returns
 
-`Promise`<[`KeyStringAny`](modules.md#keystringany)\>
+`Promise`<[`ObjAny`](modules.md#objany)\>
 
 #### Defined in
 
-[main.ts:288](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L288)
+[main.ts:290](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L290)
 
 ___
 
@@ -354,13 +398,13 @@ current network (localhost / hardhat / goerli / web3)
 
 #### Defined in
 
-[main.ts:181](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L181)
+[main.ts:181](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L181)
 
 ___
 
 ### readJson
 
-▸ **readJson**(`type?`, `name?`, `file?`): `Promise`<`undefined` \| `string` \| [`KeyStringAny`](modules.md#keystringany)\>
+▸ **readJson**(`type?`, `name?`, `file?`): `Promise`<`undefined` \| `string` \| [`ObjAny`](modules.md#objany)\>
 
 #### Parameters
 
@@ -372,11 +416,11 @@ ___
 
 #### Returns
 
-`Promise`<`undefined` \| `string` \| [`KeyStringAny`](modules.md#keystringany)\>
+`Promise`<`undefined` \| `string` \| [`ObjAny`](modules.md#objany)\>
 
 #### Defined in
 
-[main.ts:234](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L234)
+[main.ts:234](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L234)
 
 ___
 
@@ -390,7 +434,7 @@ ___
 
 #### Defined in
 
-[main.ts:336](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L336)
+[main.ts:338](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L338)
 
 ___
 
@@ -412,7 +456,7 @@ ___
 
 #### Defined in
 
-[main.ts:223](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L223)
+[main.ts:223](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L223)
 
 ___
 
@@ -435,7 +479,7 @@ ___
 
 #### Defined in
 
-[main.ts:256](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L256)
+[main.ts:257](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L257)
 
 ___
 
@@ -448,7 +492,7 @@ This function changes the current NETWORK
 **`Example`**
 
 ```ts
-await setNetwork('goerli');
+await setNetwork("goerli");
 ```
 
 #### Parameters
@@ -465,7 +509,7 @@ current network (localhost / hardhat / goerli / web3)
 
 #### Defined in
 
-[main.ts:197](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L197)
+[main.ts:197](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L197)
 
 ___
 
@@ -485,7 +529,7 @@ ___
 
 #### Defined in
 
-[main.ts:283](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L283)
+[main.ts:285](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L285)
 
 ___
 
@@ -505,7 +549,7 @@ ___
 
 #### Defined in
 
-[main.ts:320](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L320)
+[main.ts:322](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L322)
 
 ___
 
@@ -529,4 +573,4 @@ Signer used to sign transactions
 
 #### Defined in
 
-[main.ts:26](https://github.com/jonathanchowjh/nft-contracts/blob/b5b0ba5/utils/main.ts#L26)
+[main.ts:26](https://github.com/jonathanchowjh/nft-contracts/blob/b69c355/utils/main.ts#L26)

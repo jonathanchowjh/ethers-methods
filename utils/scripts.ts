@@ -1,4 +1,4 @@
-import { getNetwork, setNetwork, deployContractFromArtifacts } from './main';
+import { getNetwork, setNetwork, deployContractFromArtifacts, createIfNotExist, rootFolder } from './main';
 
 export const main = async () => {
   if (process.argv.length < 3) throw new Error(`Invalid process.argv array`);
@@ -14,6 +14,10 @@ export const main = async () => {
         'Utility',
         'utility',
         []
+      )
+    case 'create_file':
+      return createIfNotExist(
+        rootFolder(), "foldr1/foldr2/foldr3/foldr4/file1.sol"
       )
     default:
       break;
