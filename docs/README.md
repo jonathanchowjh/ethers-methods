@@ -1,6 +1,6 @@
 ethers-sdk / [Exports](modules.md)
 
-# hardhat-sdk
+# ethers-sdk
 
 ### Pre-Install Hardhat Repo
 
@@ -12,7 +12,7 @@ npx hardhat   // options: typescript-project, hardhat-toolbox
 ### Install
 
 ```
-npm i -D hardhat-sdk
+npm i -D ethers-sdk
 touch .env
 ```
 
@@ -28,11 +28,11 @@ JSON_LOCATION='utils/json/constants.json'
 ### Using the SDK
 
 - RUN `npx hardhat compile`
-- Create deploy scripts with hardhat-sdk
+- Create deploy scripts with ethers-sdk
 
 ```
 // File: scripts/deploy.ts
-import sdk from 'hardhat-sdk';
+import sdk from 'ethers-sdk';
 
 const main = async () => {
   await sdk.setNetwork('goerli');
@@ -50,11 +50,11 @@ main()
   .catch(err => console.error(err));
 ```
 
-- Create contract scripts with hardhat-sdk
+- Create contract scripts with ethers-sdk
 
 ```
 // File: scripts/runTest.ts
-import sdk from 'hardhat-sdk'
+import sdk from 'ethers-sdk'
 
 const main = async () => {
   await sdk.setNetwork('goerli');
