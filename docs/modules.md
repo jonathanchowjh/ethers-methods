@@ -45,7 +45,7 @@
 
 #### Defined in
 
-[main.ts:15](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L15)
+[main.ts:15](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L15)
 
 ## Functions
 
@@ -75,7 +75,7 @@ concatenated network name with contract name
 
 #### Defined in
 
-[main.ts:347](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L347)
+[main.ts:347](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L347)
 
 ___
 
@@ -106,7 +106,7 @@ Promise to check if path exist
 
 #### Defined in
 
-[main.ts:479](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L479)
+[main.ts:479](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L479)
 
 ___
 
@@ -137,7 +137,7 @@ Promise to create if not exist
 
 #### Defined in
 
-[main.ts:507](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L507)
+[main.ts:507](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L507)
 
 ___
 
@@ -175,7 +175,7 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:88](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L88)
+[main.ts:88](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L88)
 
 ___
 
@@ -208,7 +208,7 @@ Address of Deployed Contract
 
 #### Defined in
 
-[main.ts:54](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L54)
+[main.ts:54](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L54)
 
 ___
 
@@ -245,7 +245,7 @@ Filtered Object
 
 #### Defined in
 
-[main.ts:335](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L335)
+[main.ts:335](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L335)
 
 ___
 
@@ -275,7 +275,7 @@ Saved address of given contract
 
 #### Defined in
 
-[main.ts:218](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L218)
+[main.ts:218](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L218)
 
 ___
 
@@ -299,7 +299,7 @@ list of all saved addresses of deployed contracts
 
 #### Defined in
 
-[main.ts:203](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L203)
+[main.ts:203](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L203)
 
 ___
 
@@ -335,7 +335,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:152](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L152)
+[main.ts:152](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L152)
 
 ___
 
@@ -368,7 +368,7 @@ Deployed Contract ethers Interface
 
 #### Defined in
 
-[main.ts:113](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L113)
+[main.ts:113](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L113)
 
 ___
 
@@ -402,7 +402,7 @@ List of Absolute file paths
 
 #### Defined in
 
-[main.ts:411](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L411)
+[main.ts:411](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L411)
 
 ___
 
@@ -433,7 +433,7 @@ List of Absolute file paths
 
 #### Defined in
 
-[main.ts:389](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L389)
+[main.ts:389](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L389)
 
 ___
 
@@ -463,7 +463,7 @@ JSON Object
 
 #### Defined in
 
-[main.ts:373](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L373)
+[main.ts:373](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L373)
 
 ___
 
@@ -487,7 +487,7 @@ current network (localhost / hardhat / goerli / web3)
 
 #### Defined in
 
-[main.ts:174](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L174)
+[main.ts:174](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L174)
 
 ___
 
@@ -519,7 +519,7 @@ Object or string, depending on input
 
 #### Defined in
 
-[main.ts:257](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L257)
+[main.ts:257](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L257)
 
 ___
 
@@ -543,7 +543,7 @@ rootFolder absolute path
 
 #### Defined in
 
-[main.ts:464](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L464)
+[main.ts:464](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L464)
 
 ___
 
@@ -575,7 +575,7 @@ Promise to save address of given contract
 
 #### Defined in
 
-[main.ts:236](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L236)
+[main.ts:236](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L236)
 
 ___
 
@@ -612,7 +612,7 @@ Promise to finish writing to file
 
 #### Defined in
 
-[main.ts:296](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L296)
+[main.ts:296](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L296)
 
 ___
 
@@ -642,7 +642,7 @@ current network (localhost / hardhat / goerli / web3)
 
 #### Defined in
 
-[main.ts:190](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L190)
+[main.ts:190](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L190)
 
 ___
 
@@ -672,7 +672,7 @@ Promise that waits for given number of milliseconds
 
 #### Defined in
 
-[main.ts:359](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L359)
+[main.ts:359](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L359)
 
 ___
 
@@ -704,7 +704,7 @@ List of Absolute file paths
 
 #### Defined in
 
-[main.ts:439](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L439)
+[main.ts:439](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L439)
 
 ___
 
@@ -728,4 +728,4 @@ Signer used to sign transactions
 
 #### Defined in
 
-[main.ts:25](https://github.com/jonathanchowjh/nft-contracts/blob/ac6d968/utils/main.ts#L25)
+[main.ts:25](https://github.com/jonathanchowjh/nft-contracts/blob/edf21d7/utils/main.ts#L25)
