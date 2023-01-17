@@ -4,7 +4,7 @@ import {
   deployContractFromArtifacts,
   createIfNotExist,
   rootFolder,
-  getFilePathFromArtifacts
+  getFilePathFromArtifacts,
 } from "./main";
 
 // eslint-disable-next-line

@@ -473,7 +473,7 @@ export const rootFolder = (): string =>
  * @returns {Promise<void>} Promise to check if path exist
  * @example
  * ```ts
- * checkIfNotExist(rootFolder(), 'artifacts');
+ * checkIfNotExist(rootFolder(), 'artifacts/json/constants.json');
  * ```
  */
 export const checkIfNotExist = async (
@@ -501,7 +501,7 @@ export const checkIfNotExist = async (
  * @returns {Promise<void>} Promise to create if not exist
  * @example
  * ```ts
- * createIfNotExist(rootFolder(), 'artifacts');
+ * createIfNotExist(rootFolder(), 'artifacts/json/constants.json');
  * ```
  */
 export const createIfNotExist = async (

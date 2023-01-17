@@ -67,10 +67,12 @@ npx ts-node scripts/deploy.ts
 npx ts-node scripts/runTest.ts
 ```
 
-### SDK Documentation
+## SDK Documentation
 [FULL DOCUMENTATION](docs/modules.md)
 
-▸ **deployContract**(`contractAbi`, `contractName`, `deployArgs`, `wallet`): `Promise`<`string`\>
+### deployContract
+
+▸ **deployContract**(`contractAbi`, `contractName`, `deployArgs`, `signer`): `Promise`<`string`\>
 
 This function deploys contract, with ABI path, deployArgs, and a Signer
 
@@ -92,14 +94,17 @@ await sdk.deployContract(
 | `contractAbi` | `string` | Absolute or Relative (to project root) path of ABI JSON file |
 | `contractName` | `string` | Name of Contract to index deployed addresses |
 | `deployArgs` | `any`[] | Array of arguments to be deconstructed |
-| `wallet` | `Signer` | Signer used to sign transactions |
+| `signer` | `Signer` | Signer used to sign transactions |
 
 #### Returns
 
 `Promise`<`string`\>
 
 Address of Deployed Contract
+
 ___
+
+### deployContractFromArtifacts
 
 ▸ **deployContractFromArtifacts**(`fileName`, `contractName`, `deployArgs`, `artifactLocation?`): `Promise`<`string`\>
 
@@ -125,9 +130,12 @@ await sdk.deployContractFromArtifacts("Utility", "utility", []);
 `Promise`<`string`\>
 
 Address of Deployed Contract
+
 ___
 
-▸ **getContract**(`contractAbi`, `contractAddress`, `wallet`): `Promise`<`Contract`\>
+### getContract
+
+▸ **getContract**(`contractAbi`, `contractAddress`, `signer`): `Promise`<`Contract`\>
 
 This function creates a contract interface with a deployed contract.
 
@@ -147,14 +155,17 @@ await sdk.getContract(
 | :------ | :------ | :------ |
 | `contractAbi` | `string` | Absolute or Relative (to project root) path of ABI JSON file |
 | `contractAddress` | `string` | Address of Deployed Contract |
-| `wallet` | `Signer` | Signer used to sign transactions |
+| `signer` | `Signer` | Signer used to sign transactions |
 
 #### Returns
 
 `Promise`<`Contract`\>
 
 Deployed Contract ethers Interface
+
 ___
+
+### getContractFromArtifacts
 
 ▸ **getContractFromArtifacts**(`fileName`, `contractName`, `artifactLocation?`): `Promise`<`Contract`\>
 
@@ -180,7 +191,119 @@ await sdk.getContractFromArtifacts("Utility", "utility");
 `Promise`<`Contract`\>
 
 Deployed Contract ethers Interface
+
 ___
+
+### readJson
+
+▸ **readJson**(`type?`, `name?`, `file?`): `Promise`<`undefined` \| `string` \| [`ObjectAny`](docs/modules.md#objectany)\>
+
+This reads json file given type and name
+
+**`Example`**
+
+```ts
+await readJson('addresses', 'goerli-utility');
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type?` | `string` | (Optional) Type of saved data (eg. addresses) |
+| `name?` | `string` | (Optional) Name of saved data (eg. goerli-utility) |
+| `file?` | `string` | (Optional) File that data is saved in |
+
+#### Returns
+
+`Promise`<`undefined` \| `string` \| [`ObjectAny`](docs/modules.md#objectany)\>
+
+Object or string, depending on input
+
+___
+
+### rootFolder
+
+▸ **rootFolder**(): `string`
+
+Get rootFolder absolute path
+
+**`Example`**
+
+```ts
+rootFolder();
+```
+
+#### Returns
+
+`string`
+
+rootFolder absolute path
+
+___
+
+### saveAddress
+
+▸ **saveAddress**(`name`, `value`, `file?`): `Promise`<`void`\>
+
+This function saves the address given a contract name
+
+**`Example`**
+
+```ts
+await saveAddress('utility', '0x4d391169EcF040072d8Da35d70166f70254B32C7');
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | Name of Contract to index deployed addresses |
+| `value` | `string` | Value of address to save |
+| `file?` | `string` | (Optional) File to save address in |
+
+#### Returns
+
+`Promise`<`void`\>
+
+Promise to save address of given contract
+
+___
+
+### saveJson
+
+▸ **saveJson**(`type`, `name`, `value`, `file?`): `Promise`<`void`\>
+
+This saves to json file given type, name, and value
+
+**`Example`**
+
+```ts
+await saveJson(
+   'addresses',
+   'goerli-utility',
+   '0x65B165C17a8660e84e4427c4024fcB784577AB05'
+);
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | `string` | Type of saved data (eg. addresses) |
+| `name` | `string` | Name of saved data (eg. goerli-utility) |
+| `value` | `string` | Value of saved data (eg. 0x65B165C17a8660e84e4427c4024fcB784577AB05) |
+| `file?` | `string` | (Optional) File that data is saved in |
+
+#### Returns
+
+`Promise`<`void`\>
+
+Promise to finish writing to file
+
+___
+
+### setNetwork
 
 ▸ **setNetwork**(`networkName`): `Promise`<`string`\>
 
@@ -189,7 +312,7 @@ This function changes the current NETWORK
 **`Example`**
 
 ```ts
-await setNetwork('goerli');
+await setNetwork("goerli");
 ```
 
 #### Parameters
@@ -203,4 +326,23 @@ await setNetwork('goerli');
 `Promise`<`string`\>
 
 current network (localhost / hardhat / goerli / web3)
+
 ___
+
+### wallet
+
+▸ **wallet**(): `Promise`<`Signer`\>
+
+This function returns a Signer connected to a provider, given the appropriate network
+
+**`Example`**
+
+```ts
+await wallet();
+```
+
+#### Returns
+
+`Promise`<`Signer`\>
+
+Signer used to sign transactions
