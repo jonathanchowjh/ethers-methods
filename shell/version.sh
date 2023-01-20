@@ -5,5 +5,4 @@ git add .
 printf "\n\npublishing\n\n"
 git commit -m 'publish'
 npm publish --access public
-# git push --follow-tags
-printf "\n\npublishing\n\n"
+git push --follow-tags
