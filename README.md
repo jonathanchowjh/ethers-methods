@@ -1,17 +1,21 @@
 # ethers-sdk
 
-### Future Work (SDK Expansion)
+### Introduction
 
 This npm package is an ethers helper to create a structured and safe framework around contract deployment and testing. Future works in syntactic code analysis and unit testing helper code will help ensure safer standards when creating and deploying smart contracts.
 
-- ethers-sdk
+### Features
+
+- Features
+  - JSON based address and constants management
+- Feature Expansion (Future Work)
   - Export Contract Details with ABI
   - Unit Testing (SDK code) and Corner Case Exception Handling
   - Unit Testing Helper (eg. test-coverage analysis, testing functions, etc)
   - Syntactic security analysis of contracts
-- hardhat-jsonRPC
-  - hardhat json RPC setup
-  - Event Listener and Logger
+  - hardhat-jsonRPC (importable package extension)
+    - hardhat json RPC setup
+    - Event Listener and Logger
 
 ### Pre-Install Hardhat Repo
 
