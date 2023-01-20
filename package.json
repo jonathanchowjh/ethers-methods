@@ -43,11 +43,11 @@
   },
   "scripts": {
     "build": "chmod +x ./shell/build.sh && ./shell/build.sh",
+    "docs": "chmod +x ./shell/docs.sh && ./shell/docs.sh",
     "version": "chmod +x ./shell/version.sh && ./shell/version.sh",
     "lint": "eslint .",
     "prettier": "prettier --write --ignore-unknown **/*",
     "clean": "rm -rf dist",
-    "docs": "chmod +x ./shell/docs.sh && ./shell/docs.sh",
     "chain_localhost": "ts-node ./scripts/main.ts chain_localhost",
     "chain_goerli": "ts-node ./scripts/main.ts chain_goerli",
     "chain_read": "ts-node ./scripts/main.ts chain_read",

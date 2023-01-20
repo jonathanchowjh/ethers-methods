@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[helper.ts:3](https://github.com/jonathanchowjh/nft-contracts/blob/1f875cd/utils/helper.ts#L3)
+[helper.ts:3](https://github.com/jonathanchowjh/nft-contracts/blob/b7a7c94/utils/helper.ts#L3)
 
 ## Functions
 
@@ -44,4 +44,4 @@
 
 #### Defined in
 
-[helper.ts:5](https://github.com/jonathanchowjh/nft-contracts/blob/1f875cd/utils/helper.ts#L5)
+[helper.ts:5](https://github.com/jonathanchowjh/nft-contracts/blob/b7a7c94/utils/helper.ts#L5)
