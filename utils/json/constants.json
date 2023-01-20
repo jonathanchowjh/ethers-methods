@@ -11,5 +11,5 @@
     "goerli-token4": "0x9e6795350AD0B0Bf55Cf29F78100CAf6acc6F84B",
     "goerli-utility": "0x65B165C17a8660e84e4427c4024fcB784577AB05"
   },
-  "chain": { "network": "goerli" }
+  "chain": { "network": "localhost" }
 }

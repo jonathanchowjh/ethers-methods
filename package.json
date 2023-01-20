@@ -51,9 +51,9 @@
     "prettier": "prettier --write --ignore-unknown **/*",
     "clean": "rm -rf dist",
     "docs": "typedoc --plugin typedoc-plugin-markdown --out docs utils/main.ts",
-    "chain_localhost": "ts-node ./utils/scripts.ts chain_localhost",
-    "chain_goerli": "ts-node ./utils/scripts.ts chain_goerli",
-    "chain_read": "ts-node ./utils/scripts.ts chain_read",
+    "chain_localhost": "ts-node ./scripts/main.ts chain_localhost",
+    "chain_goerli": "ts-node ./scripts/main.ts chain_goerli",
+    "chain_read": "ts-node ./scripts/main.ts chain_read",
     "deploy": "ts-node ./scripts/deploy.ts"
   },
   "lint-staged": {

@@ -1,5 +1,5 @@
 {
-  "include": ["utils"],
+  "include": ["utils/*", "scripts/*", "test/*", "dist/*"],
   "compilerOptions": {
     "target": "es2020",
     "moduleResolution": "node",

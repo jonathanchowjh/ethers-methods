@@ -5,7 +5,7 @@ import {
   createIfNotExist,
   rootFolder,
   getFilePathFromArtifacts,
-} from "./main";
+} from "../utils/main";
 
 // eslint-disable-next-line
 export const main = async (): Promise<any> => {

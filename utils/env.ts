@@ -16,6 +16,11 @@ export const PUBLIC_KEY_1 =
   process.env.PUBLIC_KEY_1 || "0x2Ce13D32B60dd0E89beE5D911F3F47B5E539df8F";
 export const PUBLIC_KEY_2 = process.env.PUBLIC_KEY_2 || "privatKey";
 
+/**
+ * =============================
+ *            CONSTANTS
+ * =============================
+ */
 export const GOERLI_TOKEN_1 =
   process.env.GOERLI_TOKEN_1 || "0x1d9EddB94868148ef955A7234c527b3bb1483462";
 export const GOERLI_TOKEN_2 =

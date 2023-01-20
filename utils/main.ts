@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { ethers, ContractFactory, Wallet } from "ethers";
+import { ObjectAny, ErrorDefault } from "./helper";
 import {
   PRIVATE_KEY_1,
   GOERLI_RPC_URL,
@@ -11,8 +12,6 @@ import {
 // =====================================
 // HARDHAT FUNCTIONS
 // =====================================
-
-export type ObjectAny = { [k: string]: any };
 
 /**
  * This function returns a Signer connected to a provider, given the appropriate network
@@ -36,7 +35,7 @@ export const wallet = async (): Promise<ethers.Signer> => {
     const connectedWallet = new Wallet(PRIVATE_KEY_1).connect(provider);
     return connectedWallet;
   }
-  throw new Error("hardhat-sdk::wallet::invalid-network");
+  throw ErrorDefault("invalid-network");
 };
 
 /**
@@ -61,10 +60,7 @@ export const deployContractFromArtifacts = async (
     fileName,
     artifactLocation
   );
-  if (fileList.length === 0)
-    throw new Error(
-      "hardhat-sdk::deployContractFromArtifacts::artifact-not-found"
-    );
+  if (fileList.length === 0) throw ErrorDefault("artifact-not-found");
   return deployContract(fileList[0], contractName, deployArgs, await wallet());
 };
 
@@ -123,14 +119,9 @@ export const getContractFromArtifacts = async (
     ADDR_IDENT,
     await addressName(contractName)
   );
-  if (fileList.length === 0)
-    throw new Error(
-      "hardhat-sdk::getContractFromArtifacts::artifact-not-found"
-    );
+  if (fileList.length === 0) throw ErrorDefault("artifact-not-found");
   if (typeof contractAddr !== "string")
-    throw new Error(
-      "hardhat-sdk::getContractFromArtifacts::contract-address-not-found"
-    );
+    throw ErrorDefault("contract-address-not-found");
   return getContract(fileList[0], contractAddr, await wallet());
 };
 
@@ -155,7 +146,7 @@ export const getContract = async (
   signer: ethers.Signer
 ): Promise<ethers.Contract> => {
   const abi = await getJSON(contractAbi);
-  if (!abi.abi) throw new Error("hardhat-sdk::getContract::abi-not-found");
+  if (!abi.abi) throw ErrorDefault("abi-not-found");
   return new ethers.Contract(contractAddress, abi.abi, signer);
 };
 
@@ -173,8 +164,7 @@ export const getContract = async (
  */
 export const getNetwork = async (): Promise<string> => {
   const network = await readJson("chain", "network");
-  if (typeof network !== "string")
-    throw new Error("hardhat-sdk::getNetwork::invalid-network");
+  if (typeof network !== "string") throw ErrorDefault("invalid-network");
   return network;
 };
 
@@ -217,8 +207,7 @@ export const getAddresses = async (): Promise<ObjectAny> => {
  */
 export const getAddress = async (contractName: string): Promise<string> => {
   const addr = await readJson(ADDR_IDENT, await addressName(contractName));
-  if (typeof addr !== "string")
-    throw new Error("hardhat-sdk::getAddress::invalid-address");
+  if (typeof addr !== "string") throw ErrorDefault("invalid-address");
   return addr;
 };
 
@@ -362,6 +351,31 @@ export const wait = (ms: number): Promise<void> =>
   });
 
 /**
+ * Returns stack trace of previous function
+ * @returns {string} Returns stack trace of previous function
+ * @example
+ * ```ts
+ * getStackTrace(true, true);
+ * ```
+ */
+export const getStackTrace = (fullTrace?: boolean, withLocation?: boolean) => {
+  const obj: ObjectAny = {};
+  Error.captureStackTrace(obj, getStackTrace);
+  return obj.stack
+    .split("\n")
+    .splice(1)
+    .filter((val: string) => {
+      if (fullTrace) return true;
+      const words = ["Module.", "Object.", "Function."];
+      return !new RegExp(words.join("|")).test(val);
+    })
+    .map((val: string) => {
+      if (withLocation) return val;
+      return val.replace("    at ", "").replace(/\s*\(.*?\)\s*/g, "");
+    });
+};
+
+/**
  * Parsed JSON given file (absolute path / relative path to root)
  * @param {string} file file path to read
  * @returns {Promise<ObjectAny>} JSON Object
@@ -444,7 +458,7 @@ export const walk = async (dir: string): Promise<string[]> => {
       const stats = await fs.promises.stat(filePath);
       if (stats.isDirectory()) return walk(filePath);
       if (stats.isFile()) return filePath;
-      throw new Error("hardhat-sdk::walk::invalid-file-type");
+      throw ErrorDefault("invalid-file-type");
     })
   )) as any[];
   return files.filter((val) => {
@@ -480,14 +494,13 @@ export const checkIfNotExist = async (
   root: string,
   location: string
 ): Promise<void> => {
-  if (!root.includes(rootFolder()))
-    throw new Error("hardhat-sdk::checkIfNotExist::path-not-in-root");
+  if (!root.includes(rootFolder())) throw ErrorDefault("path-not-in-root");
   const loc = location.split("/");
   const isFile = loc.length === 1;
   const filePath = path.resolve(root, loc[0]);
   const files = await fs.promises.readdir(path.resolve(root));
   if (!files.includes(loc[0])) {
-    throw new Error("hardhat-sdk::checkIfNotExist::invalid-location");
+    throw ErrorDefault("invalid-location");
   } else {
     if (isFile) return;
     await checkIfNotExist(filePath, loc.slice(1).join("/"));
@@ -508,8 +521,7 @@ export const createIfNotExist = async (
   root: string,
   location: string
 ): Promise<void> => {
-  if (!root.includes(rootFolder()))
-    throw new Error("hardhat-sdk::createIfNotExist::path-not-in-root");
+  if (!root.includes(rootFolder())) throw ErrorDefault("path-not-in-root");
   const loc = location.split("/");
   const isFile = loc.length === 1;
   const filePath = path.resolve(root, loc[0]);
