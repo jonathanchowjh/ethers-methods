@@ -2,7 +2,7 @@
 
 ### Future Work (SDK Expansion)
 
-This npm package is an ethers helper to create a structured and safe framework around contract deployment and testing. Future works in syntactic code analysis and unit testing helper code will help ensure safer standards when creating and
+This npm package is an ethers helper to create a structured and safe framework around contract deployment and testing. Future works in syntactic code analysis and unit testing helper code will help ensure safer standards when creating and deploying smart contracts.
 
 - ethers-sdk
   - Export Contract Details with ABI
