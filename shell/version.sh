@@ -1,7 +1,9 @@
+set -e
 npm run build
 npm run docs
 git add .
-echo < "\n\npublishing\n\n"
+printf "\n\npublishing\n\n"
 git commit -m 'publish'
 npm publish --access public
-git push --follow-tags
+# git push --follow-tags
+printf "\n\npublishing\n\n"
