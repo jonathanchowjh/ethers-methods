@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[test.ts:1](https://github.com/jonathanchowjh/nft-contracts/blob/41b7b78/utils/test.ts#L1)
+[test.ts:1](https://github.com/jonathanchowjh/nft-contracts/blob/069dfac/utils/test.ts#L1)
