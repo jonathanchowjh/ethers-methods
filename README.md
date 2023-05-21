@@ -25,7 +25,7 @@ npx hardhat   // options: typescript-project, hardhat-toolbox
 ### Install
 
 ```
-npm i -D ethers-sdk
+npm i -D ethers-methods
 touch .env
 ```
 
@@ -41,11 +41,11 @@ JSON_LOCATION='utils/json/constants.json'
 ### Using the SDK
 
 - RUN `npx hardhat compile`
-- Create deploy and contract scripts with ethers-sdk
+- Create deploy and contract scripts with ethers-methods
 
 ```ts
 // File: scripts/runTest.ts
-import sdk from "ethers-sdk";
+import sdk from "ethers-methods";
 
 const main = async () => {
   await sdk.setNetwork("goerli");

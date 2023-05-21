@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[test.ts:1](https://github.com/jonathanchowjh/ethers-methods/blob/c1b3dff/utils/test.ts#L1)
+[test.ts:1](https://github.com/jonathanchowjh/ethers-methods/blob/ed0f270/utils/test.ts#L1)

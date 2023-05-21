@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[helper.ts:3](https://github.com/jonathanchowjh/ethers-methods/blob/c1b3dff/utils/helper.ts#L3)
+[helper.ts:3](https://github.com/jonathanchowjh/ethers-methods/blob/ed0f270/utils/helper.ts#L3)
 
 ## Functions
 
@@ -44,4 +44,4 @@
 
 #### Defined in
 
-[helper.ts:5](https://github.com/jonathanchowjh/ethers-methods/blob/c1b3dff/utils/helper.ts#L5)
+[helper.ts:5](https://github.com/jonathanchowjh/ethers-methods/blob/ed0f270/utils/helper.ts#L5)
